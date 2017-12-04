@@ -1,0 +1,1 @@
+Solo mode of "The lost expedition" board game.
