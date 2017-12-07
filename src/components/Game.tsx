@@ -16,14 +16,10 @@ interface GameProps {
 }
 
 @observer
-class Game extends React.PureComponent <GameProps> {
+class Game extends React.Component <GameProps> {
 
     constructor(props: GameProps){
         super(props)
-    }
-
-    componentWillUpdate(newProps: GameProps){
-        console.log('new Props',newProps)
     }
 
     render() {

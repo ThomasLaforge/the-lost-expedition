@@ -16,11 +16,22 @@ class Card extends React.Component<CardProps> {
         };
     }
 
+    renderActions(){
+        return <div>Actions: </div>
+    }
+
     render() {
+        let card = this.props.card
         return (
-            <div className="card">
-                {this.props.clicked}
-                {this.props.card.number}
+            <div className={'card card-' + card.number}>
+                <div className="card-actions">
+                    {this.renderActions()}
+                </div>
+                <div className="card-title">
+                    <div className="card-number">{card.number}</div>
+                    <div className="card-title-separator">-</div>
+                    <div className="card-name">{card.name}</div>
+                </div>
             </div>
         );
     }

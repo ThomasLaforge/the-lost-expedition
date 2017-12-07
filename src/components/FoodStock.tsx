@@ -8,7 +8,7 @@ interface StockProps {
 }
 
 @observer
-class FoodStock extends React.PureComponent<StockProps> {
+class FoodStock extends React.Component<StockProps> {
     
     constructor(props: StockProps) {
         super(props);
