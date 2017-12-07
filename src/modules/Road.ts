@@ -10,7 +10,11 @@ export class Road {
     }
 
     progress(){
-        this.position++
+        let canProgress = this.position < this.length - 1
+        if(canProgress){
+            this.position++
+        }
+        return canProgress
     }
 
     isComplete(){
