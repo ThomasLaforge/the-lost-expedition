@@ -1,0 +1,17 @@
+[
+    {
+        "number": 3,
+        "name": "kalapalos",
+        "actions_collections": [
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Etienne",
+        "resource": 5
+    },
+    {
+        "name": "Julie",
+        "resource": 5
+    },
+    {
+        "name": "Marie",
+        "resource": 6
+    },
+    {
+        "name": "Christophe",
+        "resource": 6
+    },
+    {
+        "name": "Thomas",
+        "resource": 7
+    },
+    {
+        "name": "Fabrice",
+        "resource": 7
+    }
+]

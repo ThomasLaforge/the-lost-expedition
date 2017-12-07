@@ -14,28 +14,28 @@ export class Card {
         this.imgPath = this.number + '.jpg'
     }
 
-    private get name(): string {
+    public get name(): string {
         return this._name
     }
-    private set name(name: string){
+    public set name(name: string){
         this._name = name
     }
-    private get number(){
+    public get number(){
         return this._number
     }
-    private set number(number: number){
+    public set number(number: number){
         this._number = number
     }
-    private get imgPath(){
+    public get imgPath(){
         return this._imgPath
     }
-    private set imgPath(imgPath: string){
+    public set imgPath(imgPath: string){
         this._imgPath = imgPath
     }
-    private get actionCollection(){
+    public get actionCollection(){
         return this._actionCollection
     }
-    private set actionCollection(actionCollection: ActionCollection){
+    public set actionCollection(actionCollection: ActionCollection){
         this._actionCollection = actionCollection
     }
 
