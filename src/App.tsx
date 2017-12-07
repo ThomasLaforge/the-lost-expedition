@@ -3,10 +3,10 @@ import {observer} from 'mobx-react';
 
 import Game from './components/Game';
 import { Game as GameModel } from './modules/Game'
-import './App.css';
+import './App.scss';
 
 @observer
-class App extends React.PureComponent<{}, { game: GameModel} > {
+class App extends React.Component<{}, { game: GameModel} > {
 
   constructor(props: any){
     super(props);
