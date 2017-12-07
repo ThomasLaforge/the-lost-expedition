@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {observer} from 'mobx-react';
+
 import {Hand as HandModel} from '../modules/Hand'
 import Card from './Card'
 
@@ -6,6 +8,7 @@ interface HandProps {
     hand: HandModel;
 }
 
+@observer
 class Hand extends React.Component<HandProps> {
     constructor(props: HandProps) {
         super(props);

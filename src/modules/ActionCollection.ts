@@ -1,14 +1,14 @@
+import {observable} from 'mobx'
+
 import { Action } from './Action'
 
 export class ActionCollection {
 
-    private _actions: Action[];
+    @observable private _actions: Action[];
 
     constructor(actions: Action[]){
         this.actions = actions
     }
-
-    
 
     // Getters / Setters
 	public get actions(): Action[] {

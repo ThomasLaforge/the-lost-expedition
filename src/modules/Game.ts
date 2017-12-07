@@ -1,3 +1,5 @@
+import {observable} from 'mobx'
+
 import {Road} from './Road';
 import {Player} from './Player';
 import {Deck} from './Deck';
@@ -7,13 +9,13 @@ import { Hero } from './Hero';
 
 export class Game {
 
-    private _morning: boolean;
-    private _player: Player;
-    private _road: Road;
-    private _deck: Deck;
-    private _playedCards: Stack;
-    private _heroesCollection: HeroesCollection;
-    private _heroes: Hero[];
+    @observable private _morning: boolean;
+    @observable private _player: Player;
+    @observable private _road: Road;
+    @observable private _deck: Deck;
+    @observable private _playedCards: Stack;
+    @observable private _heroesCollection: HeroesCollection;
+    @observable private _heroes: Hero[];
     
     constructor(morning = true, player = new Player(), road = new Road(), deck = new Deck(), playedCards = new Stack(), heroesCollection = new HeroesCollection(), nbHeroes = 3 ){
         this.morning = morning

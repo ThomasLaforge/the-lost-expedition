@@ -1,3 +1,5 @@
+import {observable} from 'mobx'
+
 import { Stock } from './Stock'
 import { Card } from './Card'
 import { Hand } from './Hand'
@@ -5,11 +7,11 @@ import { Hero } from './Hero'
 
 export class Player {
 
-    private _foodStock: Stock;
-    private _bulletStock: Stock;
-    private _name: string;
-    private _heroes: Hero[];
-    private _hand: Hand;
+    @observable private _foodStock: Stock;
+    @observable private _bulletStock: Stock;
+    @observable private _name: string;
+    @observable private _heroes: Hero[];
+    @observable private _hand: Hand;
 
     constructor(foodStock = new Stock(), bulletStock = new Stock(), name = 'anonymous', heroes: Hero[] = [], hand = new Hand() ){
         this._foodStock = foodStock

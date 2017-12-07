@@ -1,8 +1,10 @@
+import {observable} from 'mobx'
+
 import {Card} from './Card'
 
 export class Stack {
 
-    private _objects: Card[];
+    @observable private _objects: Card[];
 
     constructor(objects: Card[] = []){
         this.objects = objects

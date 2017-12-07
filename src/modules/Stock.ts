@@ -1,9 +1,11 @@
+import {observable} from 'mobx'
+
 const MAX_STOCK_SIZE = 100
 
 export class Stock {
 
-    private _stockSize: number;
-    private _maxStockSize: number;
+    @observable private _stockSize: number;
+    @observable private _maxStockSize: number;
 
     constructor(initialStockSize = 3, maxStockSize = MAX_STOCK_SIZE){
         this.stockSize = initialStockSize

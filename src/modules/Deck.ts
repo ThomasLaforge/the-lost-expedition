@@ -1,3 +1,5 @@
+import {observable} from 'mobx'
+
 import {Action} from './Action';
 import {Card} from './Card';
 import {ActionCollection} from './ActionCollection';
@@ -8,7 +10,7 @@ const cards_json = require('../datas/cards.json')
 
 export class Deck {
 
-    private _cards: Card[];
+    @observable private _cards: Card[];
 
 	constructor(cards?: Card[]) {
         if(cards){

@@ -1,9 +1,11 @@
+import {observable} from 'mobx'
+
 import { Resource } from './TheLostExpedition'
 
 export class MonoAction {
 
-    private _resource: Resource; 
-    private _drop: boolean;
+    @observable private _resource: Resource; 
+    @observable private _drop: boolean;
 
 	constructor(resource: Resource, drop: boolean) {
         this.resource = resource

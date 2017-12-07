@@ -1,9 +1,11 @@
 import * as React from 'react';
+import {observer} from 'mobx-react';
 
 interface TimeTokenProps {
     morning: boolean;
 }
 
+@observer
 class TimeToken extends React.Component<TimeTokenProps> {
     constructor(props: TimeTokenProps) {
         super(props);

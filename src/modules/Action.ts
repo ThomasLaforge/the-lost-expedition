@@ -1,10 +1,12 @@
+import {observable} from 'mobx'
+
 import { MonoAction } from './MonoAction'
 import { ActionType } from './TheLostExpedition'
 
 export class Action {
 
-    private _type: ActionType;
-    private _monoActions: MonoAction[];
+    @observable private _type: ActionType;
+    @observable private _monoActions: MonoAction[];
 
     constructor(type: ActionType, monoActions: MonoAction[]){
         this.type = type

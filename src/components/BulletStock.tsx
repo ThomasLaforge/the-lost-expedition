@@ -1,10 +1,13 @@
 import * as React from 'react';
+import {observer} from 'mobx-react';
+
 import {Stock as StockModel} from '../modules/Stock'
 
 interface StockProps {
     stock: StockModel;
 }
 
+@observer
 class BulletStock extends React.PureComponent<StockProps> {
     
     constructor(props: StockProps) {

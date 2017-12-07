@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {observer} from 'mobx-react';
 
 import { Game as GameModel } from '../modules/Game'
 
@@ -14,6 +15,7 @@ interface GameProps {
     game: GameModel
 }
 
+@observer
 class Game extends React.PureComponent <GameProps> {
 
     constructor(props: GameProps){

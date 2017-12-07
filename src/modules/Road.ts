@@ -1,7 +1,8 @@
+import {observable} from 'mobx'
 export class Road {
 
-    private _length: number;
-    private _position: number;
+    @observable private _length: number;
+    @observable private _position: number;
 
     constructor(length = 9, position = 0){
         this.position = position

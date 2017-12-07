@@ -1,11 +1,13 @@
+import {observable} from 'mobx'
+
 import { ActionCollection } from './ActionCollection'
 
 export class Card {
 
-    private _number: number
-    private _name: string
-    private _actionCollection: ActionCollection
-    private _imgPath: string
+    @observable private _number: number
+    @observable private _name: string
+    @observable private _actionCollection: ActionCollection
+    @observable private _imgPath: string
 
     constructor(number: number, name: string, actionCollection: ActionCollection){
         this.number = number

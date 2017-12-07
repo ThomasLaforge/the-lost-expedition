@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {observer} from 'mobx-react';
+
 import {Stack as StackModel} from '../modules/Stack'
 
 import Card from './Card'
@@ -7,6 +9,7 @@ interface PlayZoneProps {
     stack: StackModel;
 }
 
+@observer
 class PlayZone extends React.Component<PlayZoneProps> {
     
     constructor(props: PlayZoneProps) {

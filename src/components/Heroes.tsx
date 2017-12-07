@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {observer} from 'mobx-react';
+
 import {Hero as HeroModel} from '../modules/Hero'
 import Hero from './Hero'
 
@@ -6,6 +8,7 @@ interface HeroesProps {
     heroes: HeroModel[];
 }
 
+@observer
 class Heroes extends React.Component<HeroesProps> {
     
     constructor(props: HeroesProps) {

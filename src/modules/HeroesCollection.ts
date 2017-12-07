@@ -1,10 +1,12 @@
+import {observable} from 'mobx'
+
 import { Hero } from './Hero'
 import { HeroJSON } from './TheLostExpedition'
 const json_heroes = require('../datas/heroes.json')
 
 export class HeroesCollection {
 
-    private _heroes: Hero[];
+    @observable private _heroes: Hero[];
 
 	constructor(heroes?: Hero[]) {
         if(heroes){

@@ -1,12 +1,14 @@
+import {observable} from 'mobx'
+
 import { Resource } from './TheLostExpedition'
 import { Stock } from './Stock'
 
 export class Hero {
 
-    private _resource: Resource;
-    private _pvStock: Stock;
-    private _name: string;
-    private _imgPath: string;
+    @observable private _resource: Resource;
+    @observable private _pvStock: Stock;
+    @observable private _name: string;
+    @observable private _imgPath: string;
 
     constructor(name: string, resource: Resource, pvStock = new Stock(undefined, 4)){
         this.name = name
