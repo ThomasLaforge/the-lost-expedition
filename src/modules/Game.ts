@@ -17,7 +17,7 @@ export class Game {
     @observable private _heroesCollection: HeroesCollection;
     @observable private _heroes: Hero[];
     
-    constructor(morning = true, player = new Player(), road = new Road(), deck = new Deck(), playedCards = new Stack(), heroesCollection = new HeroesCollection(), nbHeroes = 3 ){
+    constructor(morning = true, player = new Player(), road = new Road(), deck = new Deck(), playedCards = new Stack(), heroesCollection = new HeroesCollection(), nbHeroes = 3, autoStart = true ){
         this.morning = morning
         this.player = player
         this.road = road
@@ -25,6 +25,8 @@ export class Game {
         this.playedCards = playedCards
         this.heroesCollection = heroesCollection
         this.heroes = this.heroesCollection.getSomeHeroes(nbHeroes)
+
+        autoStart && this.startTurn()
     }
 
     startTurn(){
