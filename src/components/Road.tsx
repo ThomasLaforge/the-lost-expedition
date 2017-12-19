@@ -15,10 +15,23 @@ class Road extends React.Component<RoadProps> {
         };
     }
 
+    renderRoadParts(){
+        let parts = [];
+        for (let i = 0; i < this.props.object.length; i++) {
+            let isCurrentPosition = i === this.props.object.position
+            parts.push(
+                <div className={"road-part road-part" + i} key={'road-' + i}>
+                    {isCurrentPosition && <div className="road-part-current-position" />}
+                </div>
+            )            
+        }
+        return parts
+    }
+
     render() {
         return (
             <div className="road">
-                {this.props.object.position}
+                {this.renderRoadParts()}
             </div>
         );
     }

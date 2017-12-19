@@ -1,15 +1,11 @@
 import * as React from 'react';
 import {observer} from 'mobx-react';
 
-import { Game as GameModel } from '../modules/Game'
-
-import Road from './Road';
-import TimeToken from './TimeToken';
-import Hand from './Hand';
-import Deck from './Deck';
+// import Road from './Road';
 import PlayZone from './PlayZone';
-import Heroes from './Heroes';
-import Stocks from './Stocks';
+import InfoZone from './InfoZone';
+
+import {Game as GameModel} from '../modules/Game'
 
 interface GameProps {
     game: GameModel
@@ -20,24 +16,16 @@ class Game extends React.Component <GameProps> {
 
     constructor(props: GameProps){
         super(props)
+        this.state = {
+        }
     }
 
     render() {
-        let game = this.props.game
-        let player = game.player
-
         return (
-        <div className="game">
-            <Road object={game.road} />
-            <Stocks bulletStock={player.bulletStock} foodStock={player.foodStock} />
-            <TimeToken morning={game.morning} />
-            <Deck deck={game.deck} />
-            <Heroes heroes={game.heroes} />
-            <PlayZone stack={game.playedCards} />
-            <Hand hand={player.hand} />
-            <button onClick={() => { game.switchMorning() }}>Switch Morning</button>
-            <button onClick={() => { game.progress() }}>Progress</button>
-        </div>
+            <div className="game">
+                <InfoZone game={this.props.game} />
+                <PlayZone game={this.props.game} />
+            </div>
         );
     }
 }

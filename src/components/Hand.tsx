@@ -2,10 +2,13 @@ import * as React from 'react';
 import {observer} from 'mobx-react';
 
 import {Hand as HandModel} from '../modules/Hand'
+import {Card as CardModel} from '../modules/Card'
 import Card from './Card'
 
 interface HandProps {
     hand: HandModel;
+    mustPlayCard: boolean;
+    playCard?: Function;
 }
 
 @observer
@@ -16,15 +19,27 @@ class Hand extends React.Component<HandProps> {
         };
     }
 
+    handleCardClick = (c: CardModel) => {
+        this.props.playCard && this.props.playCard(c)
+    }
+
     renderCards(){
         return this.props.hand.objects.map( (c, k) => {
-            return <Card card={c} key={k} />
+            return <Card 
+                        key={k} 
+                        card={c}
+                        canClick={this.props.mustPlayCard}
+                        clicked={false}
+                        onClick={() => this.handleCardClick(c)}
+                    />
         })
     }
 
     render() {
+        let mustPlayCardClass = this.props.mustPlayCard ? ' hand-must-play-card' : ''
+
         return (
-            <div className="hand">
+            <div className={'hand' + mustPlayCardClass}>
                 {this.renderCards()}
             </div>
         );
