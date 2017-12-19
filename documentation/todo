@@ -1,8 +1,18 @@
 Design
+    - cards
+    - help
+    - road
+    - infos
+    - choice
 
-- cards
-- help
-- road
-- 
+UI
+    - create resolve option object 
 
 Game
+    - write tests
+    - score calculation
+
+Next
+    - multiplayer / duo game support with online
+    - save/load
+    - score board local
