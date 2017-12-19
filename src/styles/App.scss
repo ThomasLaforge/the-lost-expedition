@@ -1,5 +1,16 @@
+@import './Game';
+@import './Road';
+
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: lightgrey;
 }
 
 .App-logo {
@@ -21,8 +32,4 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-.road{
-  color: green;  
 }

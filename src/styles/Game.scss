@@ -1,0 +1,96 @@
+$cardHeight : 200px;
+$roadHeight : 200px;
+
+.game {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+
+    .road {
+        width: 100%;
+        height: $roadHeight;
+    }
+
+    .game-info {
+        width: 100%;
+        height: $cardHeight + 50px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .deck {
+            width: 10%;
+        }
+
+        .time-token {
+            width: 10%;
+        }
+
+        .stocks {
+            width: 20%;
+            display: flex;
+            flex-direction: row;
+
+            .stock {
+                width: 50%;
+            }
+        }
+
+        .heroes {
+            width: 50%;
+
+            display: flex;
+            flex-direction: row;
+            
+            .hero {
+                width: 1/3 * 100%;
+            }
+        }        
+    }
+
+    .hand, .play-zone-cards-played {
+        width:100%;
+        min-width:100%;
+        height: $cardHeight + 20px;
+        min-height: $cardHeight + 20px;
+        border: 1px black solid;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .hand-must-play-card {
+        border: 3px solid green;
+    }
+
+    .card {
+        .card-img{
+            width: 180px;
+            height: 320px;
+            filter:contrast(150%);
+        }
+    }
+
+    .resolution-box {
+        .choice-actions{
+
+            .choice-actions-choice {
+                .action {
+                    border: 1px solid red;
+                    background-color: pink;
+                }
+            }
+
+            .choice-actions-optional {
+                .action {
+                    border: 1px solid blue;
+                    background-color: lightblue;    
+                }
+            }
+
+        }
+    }
+
+}

@@ -1,0 +1,27 @@
+.road {
+    display: flex;
+    flex-direction: row;
+
+    .road-part {
+        width: 1/8 * 100%;
+        background-color: green;
+        border: 1px white solid;
+        border-radius: 10px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .road-part-current-position {
+        $diameter: 20px;
+        width: $diameter;
+        min-width: $diameter;
+        height: $diameter;
+        min-height: $diameter;
+        background-color: yellow;
+        border-radius: $diameter;
+
+        margin: auto;
+    }
+}
