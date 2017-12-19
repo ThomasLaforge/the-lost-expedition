@@ -3,21 +3,21 @@ import {observable} from 'mobx'
 import { Stock } from './Stock'
 import { Card } from './Card'
 import { Hand } from './Hand'
-import { Hero } from './Hero'
+import { HeroesCollection } from './HeroesCollection'
 
 export class Player {
 
     @observable private _foodStock: Stock;
     @observable private _bulletStock: Stock;
     @observable private _name: string;
-    @observable private _heroes: Hero[];
+    @observable private _heroesCollection: HeroesCollection;
     @observable private _hand: Hand;
 
-    constructor(foodStock = new Stock(), bulletStock = new Stock(), name = 'anonymous', heroes: Hero[] = [], hand = new Hand() ){
+    constructor(heroes = new HeroesCollection([]), foodStock = new Stock(), bulletStock = new Stock(0), name = 'anonymous', hand = new Hand() ){
         this._foodStock = foodStock
         this._bulletStock = bulletStock
         this._name = name
-        this._heroes = heroes
+        this._heroesCollection = heroes
         this.hand = hand
     }
 
@@ -64,11 +64,11 @@ export class Player {
     public set name(name: string){
         this._name = name
     }
-    public get heroes(){
-        return this._heroes
+    public get heroesCollection(){
+        return this._heroesCollection
     }
-    public set heroes(heroes: Hero[]){
-        this._heroes = heroes
+    public set heroesCollection(heroes: HeroesCollection){
+        this._heroesCollection = heroes
     }
 	public get hand(): Hand {
 		return this._hand;

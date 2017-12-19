@@ -1,6 +1,6 @@
 import {observable} from 'mobx'
 
-import { Resource } from './TheLostExpedition'
+import { Resource } from './Resource'
 import { Stock } from './Stock'
 
 export class Hero {
@@ -12,21 +12,25 @@ export class Hero {
 
     constructor(name: string, resource: Resource, pvStock = new Stock(undefined, 4)){
         this.name = name
-        this.pvStock = pvStock
+		this.pvStock = pvStock
+		this.resource = resource
     }
 
-	alive(){
+	isAlive(){
 		return this.pvStock.stockSize > 0
 	}
-	dead(){
-		return !this.alive()
+	isDead(){
+		return !this.isAlive()
 	}
     winPV(nb = 1){
         return this.pvStock.add(nb)
     }
     losePV(nb = 1){
         return this.pvStock.remove(nb)
-    }
+	}
+	die(){
+		this.pvStock.empty()
+	}
 
     // Getters / Setters
 	public get resource(): Resource {

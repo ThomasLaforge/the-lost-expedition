@@ -1,7 +1,8 @@
 import {observable} from 'mobx'
 
 import { Hero } from './Hero'
-import { HeroJSON } from './TheLostExpedition'
+import { Resource } from './Resource'
+import { HeroJSON, ResourceEnum } from './TheLostExpedition'
 const json_heroes = require('../datas/heroes.json')
 
 export class HeroesCollection {
@@ -18,11 +19,15 @@ export class HeroesCollection {
         }
     }
 
+    getIndex(h: Hero){
+        return this.heroes.indexOf(h)
+    }
+
     loadHeroes(){
         let heroes: Hero[] = []
         json_heroes.forEach( (hero: HeroJSON) => {
             if(hero.hasOwnProperty('name') && hero.hasOwnProperty('resource')){
-                heroes.push( new Hero(hero.name, hero.resource) );
+                heroes.push( new Hero(hero.name, new Resource(hero.resource)) );
             }
             else {
                 console.log('hero not valid', hero)
@@ -32,6 +37,7 @@ export class HeroesCollection {
         this.heroes = heroes
         this.shuffle()
     }
+
     resetHeroes(){
         this.loadHeroes()
     }
@@ -40,9 +46,28 @@ export class HeroesCollection {
         return this.heroes.splice(0, nb)
     }
 
+    getHeroesWithDistinctsResources(nb = 3){
+        let basicResources = [ResourceEnum.Leaf, ResourceEnum.Camp, ResourceEnum.Compass];
+        return basicResources.map( r => this.getHeroByResource(r) )       
+    }
+
+    getHero(h: Hero){
+        let index = this.getIndex(h)
+        return index !== -1 && this.heroes[index]
+    }
+
+    getHeroByResource(r: ResourceEnum){
+        let allHeroesWithThisResource = this.heroes.filter(h => h.resource.type === r)
+        let randomIndex = Math.floor(Math.random() * allHeroesWithThisResource.length)
+        return allHeroesWithThisResource[randomIndex]
+    }
+
     shuffle(){
         this.heroes = this.heroes.sort(() => Math.random() - 0.5)
-        
+    }
+
+    get length(){
+        return this.heroes.length 
     }
     
     // Getters / Setters

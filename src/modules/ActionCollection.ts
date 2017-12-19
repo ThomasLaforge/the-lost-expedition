@@ -1,6 +1,7 @@
 import {observable} from 'mobx'
 
 import { Action } from './Action'
+import { ActionType } from './TheLostExpedition'
 
 export class ActionCollection {
 
@@ -8,7 +9,15 @@ export class ActionCollection {
 
     constructor(actions: Action[]){
         this.actions = actions
-    }
+	}
+	
+	getOptionalActions(){
+		return this.actions.filter(a => a.type === ActionType.Optional)
+	}
+
+	getChoiceActions(){
+		return this.actions.filter(a => a.type === ActionType.Chose)
+	}
 
     // Getters / Setters
 	public get actions(): Action[] {

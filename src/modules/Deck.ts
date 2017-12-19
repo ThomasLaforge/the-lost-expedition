@@ -12,21 +12,19 @@ export class Deck {
 
     @observable private _cards: Card[];
 
-	constructor(cards?: Card[]) {
-        if(cards){
-            this.cards = cards
-        }
-        else {
-            this.cards = cards_json.map( (card: CardJSON) => {
-                let actions = card.actions_collections.map(action => {
-                    let monoActions =  action.mono_actions.map(monoAction => {
-                        return new MonoAction(monoAction.resource, monoAction.drop)   
-                    })
-                    return new Action( action.type, monoActions )
+	constructor(cards?: Card[], shuffle = !cards) {
+        this.cards = cards || cards_json.map( (card: CardJSON) => {
+            let actions = card.actions_collections.map(action => {
+                let monoActions =  action.mono_actions.map(monoAction => {
+                    return new MonoAction(monoAction.resource, monoAction.drop)   
                 })
-                let actionCollection: ActionCollection = new ActionCollection(actions);
-                return new Card(card.number, card.name, actionCollection)
-            });
+                return new Action( action.type, monoActions )
+            })
+            let actionCollection: ActionCollection = new ActionCollection(actions);
+            return new Card(card.number, card.name, actionCollection)
+        });
+        if(shuffle){
+            this.shuffle()
         }
     }
 

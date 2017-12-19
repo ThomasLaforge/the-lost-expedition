@@ -6,33 +6,36 @@ export class Stock {
 
     @observable private _stockSize: number;
     @observable private _maxStockSize: number;
+    @observable private _minStockSize: number;
 
-    constructor(initialStockSize = 3, maxStockSize = MAX_STOCK_SIZE){
+    constructor(minStockSize = -1, maxStockSize = MAX_STOCK_SIZE, initialStockSize = 3){
         this.stockSize = initialStockSize
+        this.maxStockSize = maxStockSize
+        this.minStockSize = minStockSize
     }
 
     add(nb = 1){
-        let ok = true
+        let canAdd = this.stockSize < this.maxStockSize
         
-        this.stockSize += nb
-        if(this.stockSize > this.maxStockSize) {
-            ok = false
-            this.stockSize = this.maxStockSize
+        if(canAdd) {
+            this.stockSize += nb
         }
 
-        return ok
+        return canAdd
     }
     
     remove(nb = 1){
-        let ok = true
+        let canRemove = this.stockSize > this.minStockSize
         
-        this.stockSize -= nb
-        if(this.stockSize < 0){
-            ok = false            
-            this.stockSize = 0
+        if(canRemove){
+            this.stockSize -= nb    
         }
         
-        return ok
+        return canRemove
+    }
+
+    empty(){
+        this.stockSize = this.minStockSize;
     }
 
     // Getters / Setters
@@ -42,13 +45,17 @@ export class Stock {
     public set stockSize(stockSize: number){
         this._stockSize = stockSize
     }
-
 	public get maxStockSize(): number {
 		return this._maxStockSize;
     }
 	public set maxStockSize(value: number) {
 		this._maxStockSize = value;
+    }
+	public get minStockSize(): number {
+		return this._minStockSize;
 	}
-    
+	public set minStockSize(value: number) {
+		this._minStockSize = value;
+	}
 
 }
