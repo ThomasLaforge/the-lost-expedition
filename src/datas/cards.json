@@ -1,14 +1,2164 @@
 [
     {
+        "number": 1,
+        "name": "aranged camp",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 5
+                    },
+                    {
+                        "drop": false,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 6
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 2,
+        "name": "xinguano",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 6
+                    },
+                    {
+                        "drop": false,
+                        "resource": 8
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 11
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 10
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "number": 3,
         "name": "kalapalos",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 9
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 5
+                    },
+                    {
+                        "drop": false,
+                        "resource": 7
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 4,
+        "name": "clearing",
         "actions_collections": [
             {
                 "type": 0,
                 "mono_actions": [
                     {
                         "drop": true,
+                        "resource": 6
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    },
+                    {
+                        "drop": false,
+                        "resource": 2
+                    }                    
+                ]
+            }
+        ]
+    },
+    {
+        "number": 5,
+        "name": "the path ahead",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 10
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }                    
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
                         "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }                    
+                ]
+            }
+        ]
+    },
+    {
+        "number": 6,
+        "name": "jaguar",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 5
+                    }                    
+                ]
+            }
+        ]
+    },
+    {
+        "number": 7,
+        "name": "this fog",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 8
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 8,
+        "name": "footprints",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 9
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 9,
+        "name": "vampire bats",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 10,
+        "name": "healing herbs",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 9
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 5
+                    },
+                    {
+                        "drop": false,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 10
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 11,
+        "name": "old pathway",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 4
+                    },
+                    {
+                        "drop": false,
+                        "resource": 10
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 5
+                    },
+                    {
+                        "drop": false,
+                        "resource": 6
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 12,
+        "name": "anaconda",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 7
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 13,
+        "name": "bakajri",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 6
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 8
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 14,
+        "name": "amanaye",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 7  
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 15,
+        "name": "piranhas",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4  
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 4
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 16,
+        "name": "amanaye",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9  
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 5
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 17,
+        "name": "ambush!",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 10  
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9 
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 5
+                    },
+                    {
+                        "drop": true,
+                        "resource": 5
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 18,
+        "name": "progress",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4  
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1  
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1 
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 5
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1  
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1 
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 19,
+        "name": "steep path",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 7
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 20,
+        "name": "bushmaster",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 21,
+        "name": "scorpion",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    },
+                    {
+                        "drop": false,
+                        "resource": 10
+                    },
+                    {
+                        "drop": false,
+                        "resource": 8
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 22,
+        "name": "xavante",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 6
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 3
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 23,
+        "name": "swarm",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 24,
+        "name": "ants",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 9
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 25,
+        "name": "crocodile",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 10
+                    },
+                    {
+                        "drop": false,
+                        "resource": 10
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 26,
+        "name": "pounding rain",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    },
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 8
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 27,
+        "name": "venomous spider",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 8
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 28,
+        "name": "infected wound",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 6
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 29,
+        "name": "rapids",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 10
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 5
+                    },
+                    {
+                        "drop": false,
+                        "resource": 8
+                    },
+                    {
+                        "drop": false,
+                        "resource": 8
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 30,
+        "name": "cougar",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 7
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 5
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 31,
+        "name": "hook worms",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 32,
+        "name": "ruins",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 11
+                    },
+                    {
+                        "drop": false,
+                        "resource": 11
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": true,
+                        "resource": 6
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 33,
+        "name": "injury!",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 5
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 34,
+        "name": "lost",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 10
+                    },
+                    {
+                        "drop": false,
+                        "resource": 10
+                    },
+                    {
+                        "drop": false,
+                        "resource": 6
+                    },
+                    {
+                        "drop": false,
+                        "resource": 8
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 35,
+        "name": "thunderstorm",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 9
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 36,
+        "name": "insects",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9
+                    },
+                    {
+                        "drop": false,
+                        "resource": 5
+                    },
+                    {
+                        "drop": false,
+                        "resource": 11
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 37,
+        "name": "electric eels",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 10
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 38,
+        "name": "faulty kit",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 8
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 39,
+        "name": "river crossing",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 9
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 7
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 4
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 40,
+        "name": "black panther",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 5
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": true,
+                        "resource": 1
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 41,
+        "name": "peccary!",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 9
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 5
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 42,
+        "name": "awa",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 7
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 2
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 43,
+        "name": "fever",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 8
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 44,
+        "name": "hi aito ihi!",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 3
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 6
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 45,
+        "name": "nightshade",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 8
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 5
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 46,
+        "name": "deserted outpost",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 10
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 0
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 6
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 47,
+        "name": "kapok",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 6
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 11
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 48,
+        "name": "vantage point",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": false,
+                        "resource": 8
+                    },
+                    {
+                        "drop": false,
+                        "resource": 5
+                    }
+                ]
+            },
+            {
+                "type": 0,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 49,
+        "name": "tapirapi",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 5
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 5
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 5
+                    },
+                    {
+                        "drop": false,
+                        "resource": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 50,
+        "name": "rope bridge",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 8
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 4
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 4
+                    },
+                    {
+                        "drop": true,
+                        "resource": 3
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 10
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 51,
+        "name": "monkey",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 0
+                    },
+                    {
+                        "drop": false,
+                        "resource": 7
+                    },
+                    {
+                        "drop": false,
+                        "resource": 5
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 52,
+        "name": "mudslide!",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 8
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 53,
+        "name": "leeches",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 1
+                    },
+                    {
+                        "drop": false,
+                        "resource": 11
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 54,
+        "name": "dehydration",
+        "actions_collections": [
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 6
+                    },
+                    {
+                        "drop": true,
+                        "resource": 6
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 10
+                    },
+                    {
+                        "drop": false,
+                        "resource": 10
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 55,
+        "name": "ruins",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "number": 56,
+        "name": "swamp",
+        "actions_collections": [
+            {
+                "type": 1,
+                "mono_actions": [
+                    {
+                        "drop": false,
+                        "resource": 10
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 7
+                    }
+                ]
+            },
+            {
+                "type": 2,
+                "mono_actions": [
+                    {
+                        "drop": true,
+                        "resource": 2
+                    },
+                    {
+                        "drop": true,
+                        "resource": 2
                     }
                 ]
             }
