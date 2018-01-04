@@ -1,0 +1,23 @@
+.action {
+
+    margin: 1px 0;
+    
+    .action-chose {
+        border: 1px solid red;
+        background-color: pink;
+    }
+    
+    .action-must-do {
+        border: 1px solid yellow;
+        background-color: lightyellow;  
+    }
+
+    .action-optional {
+        border: 1px solid blue;
+        background-color: lightblue;  
+    }
+
+    .action-selected {
+        border-width: 3px;        
+    }
+}

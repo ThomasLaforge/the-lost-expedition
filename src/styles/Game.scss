@@ -66,6 +66,7 @@ $roadHeight : 200px;
     }
 
     .card {
+
         .card-img{
             width: 180px;
             height: 320px;
@@ -73,24 +74,7 @@ $roadHeight : 200px;
         }
     }
 
-    .resolution-box {
-        .choice-actions{
-
-            .choice-actions-choice {
-                .action {
-                    border: 1px solid red;
-                    background-color: pink;
-                }
-            }
-
-            .choice-actions-optional {
-                .action {
-                    border: 1px solid blue;
-                    background-color: lightblue;    
-                }
-            }
-
-        }
-    }
+    // .resolution-box {
+    // }
 
 }
