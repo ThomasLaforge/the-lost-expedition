@@ -19,6 +19,10 @@ export class ActionCollection {
 		return this.actions.filter(a => a.type === ActionType.Chose)
 	}
 
+	getMustDoActions(){
+		return this.actions.filter(a => a.type === ActionType.MustDo)
+	}
+
     // Getters / Setters
 	public get actions(): Action[] {
 		return this._actions;

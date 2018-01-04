@@ -16,6 +16,17 @@ export class Card {
         this.imgPath = this.number + '.jpg'
     }
 
+    // Wrappers
+    getOptionalActions(){
+		return this.actionCollection.getOptionalActions()
+	}
+	getChoiceActions(){
+		return this.actionCollection.getChoiceActions()
+	}
+	getMustDoActions(){
+		return this.actionCollection.getMustDoActions()
+	}
+
     public get name(): string {
         return this._name
     }

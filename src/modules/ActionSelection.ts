@@ -1,20 +1,20 @@
 import {observable} from 'mobx'
 
-import { SelectedAction } from './SelectedAction'
+import { ResolvedAction } from './ResolvedAction'
 
 export class ActionSelection {
 
-    @observable private _actions: SelectedAction[];
+    @observable private _actions: ResolvedAction[];
 
-    constructor(actions: SelectedAction[]){
+    constructor(actions: ResolvedAction[]){
         this.actions = actions
     }
 
     // Getters / Setters
-	public get actions(): SelectedAction[] {
+	public get actions(): ResolvedAction[] {
 		return this._actions;
 	}
-	public set actions(value: SelectedAction[]) {
+	public set actions(value: ResolvedAction[]) {
 		this._actions = value;
     }    
     

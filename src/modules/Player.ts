@@ -28,14 +28,26 @@ export class Player {
     removeFood(nb = 1){
         return this.foodStock.remove(nb)
     }
-    nourrish(){
+    nourrish() {
         return this.removeFood(1)
+    }
+    eat() {
+        return this.nourrish()
+    }
+    getFood(){
+        return this.addFood();
     }
     addBullet(nb = 1){
         return this.bulletStock.add(nb)
     }
     removeBullet(nb = 1){
         return this.bulletStock.remove(nb)
+    }
+    shot(){
+        return this.removeBullet()
+    }
+    getBullet(){
+        return this.addBullet();
     }
 
     getNewCards(cards: Card[]){

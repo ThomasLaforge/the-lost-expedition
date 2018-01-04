@@ -22,6 +22,9 @@ export class Hero {
 	isDead(){
 		return !this.isAlive()
 	}
+	isFullLife(){
+		return this.pvStock.stockSize === this.pvStock.maxStockSize
+	}
     winPV(nb = 1){
         return this.pvStock.add(nb)
     }

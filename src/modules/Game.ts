@@ -5,12 +5,13 @@ import {Card} from './Card';
 import {Player} from './Player';
 import {Deck} from './Deck';
 import {Stack} from './Stack';
+import {KeptCards} from './KeptCards';
 import {HeroesCollection} from './HeroesCollection';
-// import {Hero} from './Hero';
-import {Side, ResourceEnum} from './TheLostExpedition'
-import { SelectedAction } from './SelectedAction';
+import {Side, ResourceEnum, ResolvedActionOptions} from './TheLostExpedition'
 import { ActionSelection } from './ActionSelection';
-// import { Resource } from './Resource';
+import { ResolvedAction } from './ResolvedAction';
+import { MonoAction } from './MonoAction';
+import { Action } from './Action';
 
 export class Game {
 
@@ -19,11 +20,12 @@ export class Game {
     @observable private _road: Road;
     @observable private _deck: Deck;
     @observable private _playedCards: Stack;
-    @observable private _keptCards: Stack;
+    @observable private _keptCards: KeptCards;
     @observable private _heroesCollection: HeroesCollection;
     @observable private _cardToPlace: Card;
+    @observable private _historyMonoAction: MonoAction[];
     
-    constructor(player?: Player, morning = true, road = new Road(), deck = new Deck(), playedCards = new Stack([], 6), heroesCollection = new HeroesCollection(), nbHeroes = 3, keptCards = new Stack(), cardToPlace: Card = null, autoStart = true ){
+    constructor(player?: Player, morning = true, road = new Road(), deck = new Deck(), playedCards = new Stack([], 6), heroesCollection = new HeroesCollection(), nbHeroes = 3, keptCards = new KeptCards(), cardToPlace: Card = null, autoStart = true ){
         this.heroesCollection = heroesCollection
         let playerHeroesCollection = new HeroesCollection(this.heroesCollection.getHeroesWithDistinctsResources())
         this.player = player || new Player(playerHeroesCollection)
@@ -89,10 +91,10 @@ export class Game {
     }
 
     playerPlayCard(c: Card, side?: Side){
-        console.log('side to play', side)
+        // console.log('side to play', side
         this.player.hand.remove(c);
         this.playedCards.add(c, side);
-        if(this.morning && this.playedCards.length() === 4){
+        if(this.morning && this.playedCards.length === 4){
             this.drawCardsForPlayedCards()
         }
     }
@@ -125,7 +127,7 @@ export class Game {
         }
     }
 
-    resolveAction(c: Card, action: SelectedAction){
+    resolveAction(c: Card, action: ResolvedAction){
         let toKeep = false;
         action.monoActions.forEach( (subAction, i) => {
             let options = action.options && action.options[i]
@@ -154,7 +156,12 @@ export class Game {
                     if(options && options.hero){
                         let playerExist = this.player.heroesCollection.getIndex(options.hero) !== -1 
                         if( playerExist ){
-                            options.hero.losePV()
+                            if(subAction.drop){
+                                options.hero.losePV()
+                            }
+                            else {
+                                options.hero.winPV()
+                            }
                         }
                         else {
                             throw new Error('no hero found to lose pv action')
@@ -201,7 +208,7 @@ export class Game {
                         }
                     }
                     else {
-                        console.log('')
+                        console.log('keep card')
                         toKeep = true
                     }
                     break;
@@ -230,6 +237,55 @@ export class Game {
         return toKeep;
     }
 
+    actionNeedOptions(action: Action){
+        let monoActionsWithOptions = action.monoActions.filter( ma => this.getOptionsForMonoAction(ma).length > 0 )
+        return monoActionsWithOptions.length > 0
+    }
+
+    getOptionsForMonoAction(monoAction: MonoAction){
+        console.log('monoAction get options', monoAction)
+        let options: ResolvedActionOptions[] = [];
+        switch(monoAction.resource) {
+            case ResourceEnum.PV:
+            case ResourceEnum.Life:
+                // check if drop then alive else win then not full life
+                if(monoAction.drop){
+                    options = this.player.heroesCollection.getHeroesAlive().map( hero => { return { hero } })
+                }
+                else {
+                    options = this.player.heroesCollection.getHeroesNotFullLife().map(hero => { return {hero} })
+                }
+                break;
+            case ResourceEnum.Leaf:
+            case ResourceEnum.Camp:
+            case ResourceEnum.Compass:
+                if(monoAction.drop){
+                    let hero = this.player.heroesCollection.getHeroByResource(monoAction.resource)
+                    if( hero && hero.isAlive() ) {
+                        options = [{ hero }]
+                    }
+                    let keptCards = this.keptCards.getCardsWithResourceAccessible(monoAction.resource).map(keptCard => { return { keptCard } })
+                    options = options.concat(keptCards)
+                }
+                break;
+            case ResourceEnum.Switch:
+                let nextCards = this.playedCards.getNextCards()
+                nextCards.forEach( (c1, i) => {
+                    nextCards.forEach( (c2, j) => {
+                        if(i > j){
+                            options.push({ 
+                                cardsToSwitch : [c1, c2]
+                            })
+                        }
+                    })
+                })
+                break;
+            default:
+                break;
+        }
+        return options
+    }
+
     progress(){
         this.road.progress()
     }
@@ -241,7 +297,7 @@ export class Game {
         // et munition restant 
         score += this.player.bulletStock.stockSize
         // un point pour chaque carte d'expertise inutilisée 
-        score += this.keptCards.length()
+        score += this.keptCards.length
         // TODO : cinq points si vous n'avez pas encore embarqué le deck. 
         if(true){
             score += 5
@@ -287,10 +343,10 @@ export class Game {
 	public set heroesCollection(value: HeroesCollection) {
 		this._heroesCollection = value;
     }
-	public get keptCards(): Stack {
+	public get keptCards(): KeptCards {
 		return this._keptCards;
 	}
-	public set keptCards(value: Stack) {
+	public set keptCards(value: KeptCards) {
 		this._keptCards = value;
 	}
 	public get cardToPlace(): Card {
@@ -298,6 +354,13 @@ export class Game {
 	}
 	public set cardToPlace(value: Card) {
 		this._cardToPlace = value;
+    }
+	public get historyMonoAction(): MonoAction[] {
+		return this._historyMonoAction;
 	}
+	public set historyMonoAction(value: MonoAction[]) {
+		this._historyMonoAction = value;
+	}
+    
         
 }

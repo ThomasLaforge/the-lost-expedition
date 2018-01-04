@@ -32,7 +32,7 @@ export class Stack {
         return (this.maxNbObjects || this.maxNbObjects === 0) && this.objects.length === this.maxNbObjects
     }
 
-    length(){
+    get length(){
         return this.objects.length
     }
 
@@ -42,6 +42,10 @@ export class Stack {
 
     getFirst(){
         return this.get(0)
+    }
+
+    getNextCards(){
+        return this.objects.slice(1, this.length - 1)
     }
 
     getNextOne(){
@@ -70,7 +74,7 @@ export class Stack {
 
     remove(c: Card){
         this.objects.splice(this.objects.indexOf(c), 1)
-        if(this.length() === 0){
+        if(this.length === 0){
             this.unlock()
         }
     }

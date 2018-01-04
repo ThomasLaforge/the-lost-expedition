@@ -49,7 +49,7 @@ export interface ActionJSON {
     mono_actions: MonoActionJSON[]
 }
 
-export interface SelectedActionOptions {
+export interface ResolvedActionOptions {
     hero?: Hero,
     keptCard?: Card,
     cardsToSwitch?: Card[]
@@ -66,7 +66,39 @@ export class EnumStringifier {
             case ActionType.Optional:
                 return 'optional'
             default:
-                throw new Error('');
+                throw new Error('not action type valid');
+        }
+    }
+
+    
+    static getRecourceName(resource: ResourceEnum) {
+        switch (resource) {
+            case ResourceEnum.Bullet:
+                return 'bullet'
+            case ResourceEnum.Food:
+                return 'food'
+            case ResourceEnum.PV:
+                return 'pv'
+            case ResourceEnum.Life:
+                return 'life' 
+            case ResourceEnum.Run:
+                return 'run'
+            case ResourceEnum.Leaf:
+                return 'leaf'
+            case ResourceEnum.Camp:
+                return 'camp'
+            case ResourceEnum.Compass:
+                return 'compass'
+            case ResourceEnum.Switch:
+                return 'switch'
+            case ResourceEnum.Skip:
+                return 'skip' 
+            case ResourceEnum.Add:
+                return 'add'
+            case ResourceEnum.Remove:
+                return 'remove'
+            default:
+                throw new Error('not resource valid');
         }
     }
 

@@ -51,6 +51,14 @@ export class HeroesCollection {
         return basicResources.map( r => this.getHeroByResource(r) )       
     }
 
+    getHeroesAlive(){
+        return this.heroes.filter(h => h.isAlive())
+    }
+
+    getHeroesNotFullLife(){
+        return this.heroes.filter(h => h.isFullLife() )
+    }
+
     getHero(h: Hero){
         let index = this.getIndex(h)
         return index !== -1 && this.heroes[index]
