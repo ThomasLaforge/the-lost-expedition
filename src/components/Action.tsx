@@ -9,6 +9,7 @@ import MonoAction from './MonoAction'
 interface ActionProps {
     action: ActionModel;
     onClick?: Function;
+    selected?: boolean;
 }
 
 @observer
@@ -26,12 +27,13 @@ class Action extends React.Component<ActionProps> {
 
     render() {
         let typeString = EnumStringifier.getActionType(this.props.action.type)
-        let classType = 'action-' +  typeString
+        let classType = 'action-' + typeString
 
         return (
-            <div className="action" onClick={() => this.props.onClick && this.props.onClick()}>
-                Actions: {this.props.action.type}
-                {this.renderMonoActions()}
+            <div className='action' onClick={() => this.props.onClick && this.props.onClick()}>
+                <div className={classType + (this.props.selected ? ' action-selected' : '')}>
+                    {this.renderMonoActions()}
+                </div>
             </div>
         );
     }

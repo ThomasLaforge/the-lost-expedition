@@ -18,11 +18,8 @@ class MonoAction extends React.Component<MonoActionProps> {
 
     render() {
         return (
-            <div className="Monoaction">
-                MonoAction: 
-                {this.props.monoAction.drop ? 'drop' : 'not drop'},
-                {this.props.monoAction.resource}
-
+            <div className="mono-action">
+                {this.props.monoAction.getDefinition()}
             </div>
         );
     }

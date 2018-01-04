@@ -8,6 +8,8 @@ interface CardProps {
     clicked?: boolean;
     canClick?: boolean;
     onClick?: Function;
+    imgMode?: boolean;
+    withActions?: boolean;
 }
 
 @observer
@@ -32,15 +34,17 @@ class Card extends React.Component<CardProps> {
         let card = this.props.card
         return (
             <div className={'card card-' + card.number} onClick={() => this.handleClick()}>
-                {/* <div className="card-actions">
-                    {this.renderActions()}
-                </div>
+                {!this.props.imgMode && this.props.withActions && 
+                    <div className="card-actions">
+                        {/* {this.renderActions()} */}
+                    </div>
+                }
                 <div className="card-title">
                     <div className="card-number">{card.number}</div>
                     <div className="card-title-separator">-</div>
                     <div className="card-name">{card.name}</div>
-                </div> */}
-                <img src='./img/5.png' className="card-img" />
+                </div>
+                {/* <img src='./img/4.png' className="card-img" /> */}
             </div>
         );
     }
