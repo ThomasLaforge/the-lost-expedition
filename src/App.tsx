@@ -2,6 +2,7 @@ import * as React from 'react';
 import {observer } from 'mobx-react';
 
 import Game from './components/Game';
+import CardCollection from './components/CardCollection';
 import { Game as GameModel } from './modules/Game'
 // import { ActionSelection as ActionSelectionModel } from './modules/ActionSelection'
 // import { SelectedAction as SelectedActionModel } from './modules/SelectedAction'
@@ -20,7 +21,8 @@ class App extends React.Component<{}, { game: GameModel} > {
   render() {
     return (
       <div className="App">
-        <Game game={this.state.game} />
+        {/* <Game game={this.state.game} /> */}
+        <CardCollection />
       </div>
     );
   }
