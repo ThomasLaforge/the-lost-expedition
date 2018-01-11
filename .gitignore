@@ -28,3 +28,6 @@ yarn-error.log*
 
 #scans
 src/assets/scans/*.jpg
+src/assets/scans/*.png
+public/img/auto_split_cards/
+src/assets/scans/tests/
