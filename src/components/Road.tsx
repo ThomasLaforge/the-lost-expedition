@@ -19,8 +19,11 @@ class Road extends React.Component<RoadProps> {
         let parts = [];
         for (let i = 0; i < this.props.object.length; i++) {
             let isCurrentPosition = i === this.props.object.position
+            let isDiscovered = isCurrentPosition || i < this.props.object.position
+            let roadPartDiscovered = isDiscovered ? 'road-part-discovered' : ''
+            
             parts.push(
-                <div className={"road-part road-part" + i} key={'road-' + i}>
+                <div className={'road-part road-part-' + i + ' ' + roadPartDiscovered} key={'road-' + i}>
                     {isCurrentPosition && <div className="road-part-current-position" />}
                 </div>
             )            
