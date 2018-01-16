@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {observer } from 'mobx-react';
 
+import DevTools from 'mobx-react-devtools';
+
 import Game from './components/Game';
 import CardCollection from './components/CardCollection';
 import Logger from './components/Logger';
@@ -25,6 +27,7 @@ class App extends React.Component<{}, { game: GameModel} > {
         {/* <Game game={this.state.game} /> */}
         {/* <Logger logger={this.state.game.logger} /> */}
         <CardCollection />
+        <DevTools />
       </div>
     );
   }
