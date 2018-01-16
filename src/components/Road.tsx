@@ -26,16 +26,13 @@ class RoadPart extends React.Component<RoadPartProps> {
 
     renderHiddenFace(){
         return (
-            <div className='road-part-hidden'>
-                hidden
-            </div> 
+            <div className='road-part-hidden'></div> 
         )
     }
 
     renderDiscoveredFace(){
-        let roadPartDiscovered = this.isDiscovered ? 'road-part-discovered' : ''
         return (
-            <div className={' road-part-' + this.props.number + ' ' + roadPartDiscovered} key={'road-' + i}>
+            <div className={'road-part-discovered'}>
                 {this.isCurrentPosition && <div className="road-part-current-position" />}
             </div>
         )
@@ -53,7 +50,7 @@ class RoadPart extends React.Component<RoadPartProps> {
 //--------------------------------------------------------------------------------------------------------------
 
 interface RoadProps {
-    object: RoadModel;
+    road: RoadModel;
 }
 
 @observer
@@ -66,11 +63,12 @@ class Road extends React.Component<RoadProps> {
 
     renderRoadParts(){
         let parts = [];
-        for (let i = 0; i < this.props.object.length; i++) {            
+        for (let i = 0; i < this.props.road.length; i++) {            
             parts.push(
                 <RoadPart
+                    key={i}
                     number={i}
-                    playerPosition={this.props.object.position}
+                    playerPosition={this.props.road.position}
                 />
             )            
         }

@@ -35,7 +35,7 @@ class InfoZone extends React.Component<InfoZoneProps, InfoZoneState> {
 
         return (
             <div className="game-info">
-                {/* <Road object={game.road} /> */}
+                {/* <Road road={game.road} /> */}
                 <Deck deck={game.deck} />
                 <TimeToken morning={game.morning} />
                 <Stocks bulletStock={player.bulletStock} foodStock={player.foodStock} />
