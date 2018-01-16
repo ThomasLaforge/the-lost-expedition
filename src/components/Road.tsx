@@ -3,6 +3,55 @@ import {observer} from 'mobx-react';
 
 import {Road as RoadModel} from '../modules/Road'
 
+
+interface RoadPartProps {
+    number: number;
+    playerPosition: number;
+}
+
+@observer
+class RoadPart extends React.Component<RoadPartProps> {
+    constructor(props: RoadPartProps) {
+        super(props);
+        this.state = {
+        };
+    }
+
+    get isCurrentPosition(){
+        return this.props.number === this.props.playerPosition
+    }
+    get isDiscovered(){
+        return this.isCurrentPosition || this.props.number < this.props.playerPosition
+    }
+
+    renderHiddenFace(){
+        return (
+            <div className='road-part-hidden'>
+                hidden
+            </div> 
+        )
+    }
+
+    renderDiscoveredFace(){
+        let roadPartDiscovered = this.isDiscovered ? 'road-part-discovered' : ''
+        return (
+            <div className={' road-part-' + this.props.number + ' ' + roadPartDiscovered} key={'road-' + i}>
+                {this.isCurrentPosition && <div className="road-part-current-position" />}
+            </div>
+        )
+    }
+
+    render() {
+        return ( 
+            <div className={'road-part road-part-' + this.props.number}>
+                {this.isDiscovered ? this.renderDiscoveredFace() : this.renderHiddenFace()}
+            </div>
+        );
+    }
+}
+
+//--------------------------------------------------------------------------------------------------------------
+
 interface RoadProps {
     object: RoadModel;
 }
@@ -17,15 +66,12 @@ class Road extends React.Component<RoadProps> {
 
     renderRoadParts(){
         let parts = [];
-        for (let i = 0; i < this.props.object.length; i++) {
-            let isCurrentPosition = i === this.props.object.position
-            let isDiscovered = isCurrentPosition || i < this.props.object.position
-            let roadPartDiscovered = isDiscovered ? 'road-part-discovered' : ''
-            
+        for (let i = 0; i < this.props.object.length; i++) {            
             parts.push(
-                <div className={'road-part road-part-' + i + ' ' + roadPartDiscovered} key={'road-' + i}>
-                    {isCurrentPosition && <div className="road-part-current-position" />}
-                </div>
+                <RoadPart
+                    number={i}
+                    playerPosition={this.props.object.position}
+                />
             )            
         }
         return parts
