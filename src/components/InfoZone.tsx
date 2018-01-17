@@ -14,7 +14,6 @@ import KeptCards from './KeptCards';
 import PlayerActionBox from './PlayerActionBox';
 
 interface InfoZoneProps extends DefaultProps {
-    game: GameModel;
 }
 
 interface InfoZoneState {

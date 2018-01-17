@@ -12,7 +12,6 @@ import ResolutionBox from './ResolutionBox';
 import Card from './Card'
 
 interface PlayZoneProps extends DefaultProps {
-    game: GameModel;
 }
 
 interface PlayZoneState {
@@ -44,9 +43,9 @@ class PlayZone extends React.Component<PlayZoneProps, PlayZoneState> {
                 <div className="play-zone-cards-played">
                     {this.renderCards()}
                 </div>
-                { game.playedCards.isLock() && !!cardToResolve && <ResolutionBox card={cardToResolve} game={game} /> }
-                { !game.playedCards.isLock() && game.morning && <MorningCardSelection game={game} /> }
-                { !game.playedCards.isLock() && !game.morning && <EveningCardSelection game={game} /> }
+                { game.playedCards.isLock() && !!cardToResolve && <ResolutionBox card={cardToResolve} /> }
+                { !game.playedCards.isLock() && game.morning && <MorningCardSelection /> }
+                { !game.playedCards.isLock() && !game.morning && <EveningCardSelection /> }
             </div>
         );
     }

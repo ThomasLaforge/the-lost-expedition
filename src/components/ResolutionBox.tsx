@@ -14,7 +14,6 @@ import Action from './Action'
 import SelectedActionsBox from './SelectedActionsBox'
 
 interface ResolutionBoxProps extends DefaultProps {
-    game: GameModel;
     card: CardModel;
 }
 
@@ -105,7 +104,6 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
     renderSelectedActionOptions(): JSX.Element{
         return <SelectedActionsBox 
             actions={this.state.selectedActions}
-            game={this.props.game}
         />
     }
 

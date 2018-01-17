@@ -24,8 +24,8 @@ class Game extends React.Component <GameProps> {
     render() {
         return (
             <div className="game">
-                <InfoZone game={this.props.game} />
-                <PlayZone game={this.props.game} />
+                <InfoZone />
+                <PlayZone />
             </div>
         );
     }

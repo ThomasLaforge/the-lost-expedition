@@ -15,7 +15,6 @@ import PlayerActionBox from './PlayerActionBox';
 import Hand from './Hand';
 
 interface MorningCardSelectionProps extends DefaultProps {
-    game: GameModel
 }
 
 interface MorningCardSelectionState {

@@ -14,7 +14,6 @@ import MonoActionChoices from './MonoActionChoices'
 
 interface SelectedActionsBoxProps extends DefaultProps {
     actions: ActionModel[],
-    game: Game
 }
 
 interface SelectedActionsBoxState {
