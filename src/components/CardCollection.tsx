@@ -8,7 +8,6 @@ import {Deck} from '../modules/Deck'
 import {Store, UIStore} from '../modules/Store'
 
 interface CardCollectionProps extends DefaultProps {
-    test?: number
 }
 interface CardCollectionState {
     cards: CardModel[]
@@ -32,7 +31,6 @@ class CardCollection extends React.Component<CardCollectionProps, CardCollection
         return (
             <div className='card-collection'>
                 {this.renderCards()}
-                {this.props.test}
             </div>
         );
     }

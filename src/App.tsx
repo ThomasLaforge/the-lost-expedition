@@ -28,7 +28,7 @@ class App extends React.Component<{}, { game: GameModel} > {
         <div className="App">
           <Game />
           {/* <Logger logger={this.state.game.logger} /> */}
-          <CardCollection test={26262626} />
+          <CardCollection />
           <DevTools />
         </div>
       </Provider>
