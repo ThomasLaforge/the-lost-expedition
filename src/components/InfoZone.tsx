@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Game as GameModel} from '../modules/Game'
 import {Card as CardModel} from '../modules/Card'
@@ -12,13 +13,13 @@ import Stocks from './Stocks';
 import KeptCards from './KeptCards';
 import PlayerActionBox from './PlayerActionBox';
 
-interface InfoZoneProps {
-    game: GameModel;
+interface InfoZoneProps extends DefaultProps {
 }
 
 interface InfoZoneState {
 }
 
+@inject(injector)
 @observer
 class InfoZone extends React.Component<InfoZoneProps, InfoZoneState> {
     
@@ -35,7 +36,7 @@ class InfoZone extends React.Component<InfoZoneProps, InfoZoneState> {
 
         return (
             <div className="game-info">
-                {/* <Road object={game.road} /> */}
+                {/* <Road road={game.road} /> */}
                 <Deck deck={game.deck} />
                 <TimeToken morning={game.morning} />
                 <Stocks bulletStock={player.bulletStock} foodStock={player.foodStock} />

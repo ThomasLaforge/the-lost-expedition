@@ -1,15 +1,17 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Stock as StockModel} from '../modules/Stock'
 import BulletStock from './BulletStock'
 import FoodStock from './FoodStock'
 
-interface StockProps {
+interface StockProps extends DefaultProps {
     foodStock: StockModel;
     bulletStock: StockModel;
 }
 
+@inject(injector)
 @observer
 class Stocks extends React.Component<StockProps> {
     

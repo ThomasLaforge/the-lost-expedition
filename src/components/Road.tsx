@@ -1,10 +1,57 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Road as RoadModel} from '../modules/Road'
 
+interface RoadPartProps extends DefaultProps {
+    number: number;
+    playerPosition: number;
+}
+
+@inject(injector)
+@observer
+class RoadPart extends React.Component<RoadPartProps> {
+    constructor(props: RoadPartProps) {
+        super(props);
+        this.state = {
+        };
+    }
+
+    get isCurrentPosition(){
+        return this.props.number === this.props.playerPosition
+    }
+    get isDiscovered(){
+        return this.isCurrentPosition || this.props.number < this.props.playerPosition
+    }
+
+    renderHiddenFace(){
+        return (
+            <div className='road-part-hidden'></div> 
+        )
+    }
+
+    renderDiscoveredFace(){
+        return (
+            <div className={'road-part-discovered'}>
+                {this.isCurrentPosition && <div className="road-part-current-position" />}
+            </div>
+        )
+    }
+
+    render() {
+        return ( 
+            <div className={'road-part road-part-' + this.props.number}>
+                {this.isDiscovered ? this.renderDiscoveredFace() : this.renderHiddenFace()}
+            </div>
+        );
+    }
+}
+
+//--------------------------------------------------------------------------------------------------------------
+
 interface RoadProps {
-    object: RoadModel;
+    road: RoadModel;
 }
 
 @observer
@@ -17,12 +64,13 @@ class Road extends React.Component<RoadProps> {
 
     renderRoadParts(){
         let parts = [];
-        for (let i = 0; i < this.props.object.length; i++) {
-            let isCurrentPosition = i === this.props.object.position
+        for (let i = 0; i < this.props.road.length; i++) {            
             parts.push(
-                <div className={"road-part road-part" + i} key={'road-' + i}>
-                    {isCurrentPosition && <div className="road-part-current-position" />}
-                </div>
+                <RoadPart
+                    key={i}
+                    number={i}
+                    playerPosition={this.props.road.position}
+                />
             )            
         }
         return parts

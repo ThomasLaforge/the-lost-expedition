@@ -12,6 +12,7 @@ import { ActionSelection } from './ActionSelection';
 import { ResolvedAction } from './ResolvedAction';
 import { MonoAction } from './MonoAction';
 import { Action } from './Action';
+import { Logger } from './Logger'
 
 export class Game {
 
@@ -24,8 +25,9 @@ export class Game {
     @observable private _heroesCollection: HeroesCollection;
     @observable private _cardToPlace: Card;
     @observable private _historyMonoAction: MonoAction[];
-    
-    constructor(player?: Player, morning = true, road = new Road(), deck = new Deck(), playedCards = new Stack([], 6), heroesCollection = new HeroesCollection(), nbHeroes = 3, keptCards = new KeptCards(), cardToPlace: Card = null, autoStart = true ){
+    @observable private _logger: Logger;
+
+    constructor(player?: Player, morning = true, road = new Road(), deck = new Deck(), playedCards = new Stack([], 6), heroesCollection = new HeroesCollection(), nbHeroes = 3, keptCards = new KeptCards(), cardToPlace: Card = null, logger = new Logger(), autoStart = true ){
         this.heroesCollection = heroesCollection
         let playerHeroesCollection = new HeroesCollection(this.heroesCollection.getHeroesWithDistinctsResources())
         this.player = player || new Player(playerHeroesCollection)
@@ -35,6 +37,7 @@ export class Game {
         this.cardToPlace = cardToPlace
         this.playedCards = playedCards
         this.keptCards = keptCards
+        this.logger = logger
         autoStart && this.startTurn()
     }
 
@@ -360,6 +363,12 @@ export class Game {
 	}
 	public set historyMonoAction(value: MonoAction[]) {
 		this._historyMonoAction = value;
+	}
+	public get logger(): Logger {
+		return this._logger;
+    }
+	public set logger(value: Logger) {
+		this._logger = value;
 	}
     
         

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Game as GameModel} from '../modules/Game'
 import {Card as CardModel} from '../modules/Card'
@@ -10,13 +11,13 @@ import EveningCardSelection from './EveningCardSelection';
 import ResolutionBox from './ResolutionBox';
 import Card from './Card'
 
-interface PlayZoneProps {
-    game: GameModel;
+interface PlayZoneProps extends DefaultProps {
 }
 
 interface PlayZoneState {
 }
 
+@inject(injector)
 @observer
 class PlayZone extends React.Component<PlayZoneProps, PlayZoneState> {
     
@@ -42,9 +43,9 @@ class PlayZone extends React.Component<PlayZoneProps, PlayZoneState> {
                 <div className="play-zone-cards-played">
                     {this.renderCards()}
                 </div>
-                { game.playedCards.isLock() && !!cardToResolve && <ResolutionBox card={cardToResolve} game={game} /> }
-                { !game.playedCards.isLock() && game.morning && <MorningCardSelection game={game} /> }
-                { !game.playedCards.isLock() && !game.morning && <EveningCardSelection game={game} /> }
+                { game.playedCards.isLock() && !!cardToResolve && <ResolutionBox card={cardToResolve} /> }
+                { !game.playedCards.isLock() && game.morning && <MorningCardSelection /> }
+                { !game.playedCards.isLock() && !game.morning && <EveningCardSelection /> }
             </div>
         );
     }

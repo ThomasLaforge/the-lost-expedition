@@ -1,10 +1,12 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
-interface TimeTokenProps {
+interface TimeTokenProps extends DefaultProps {
     morning: boolean;
 }
 
+@inject(injector)
 @observer
 class TimeToken extends React.Component<TimeTokenProps> {
     constructor(props: TimeTokenProps) {

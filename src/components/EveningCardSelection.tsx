@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Game as GameModel} from '../modules/Game'
 import {Card as CardModel} from '../modules/Card'
@@ -13,8 +14,7 @@ import KeptCards from './KeptCards';
 import PlayerActionBox from './PlayerActionBox';
 import Hand from './Hand';
 
-interface MorningCardSelectionProps {
-    game: GameModel
+interface MorningCardSelectionProps extends DefaultProps {
 }
 
 interface MorningCardSelectionState {
@@ -22,6 +22,7 @@ interface MorningCardSelectionState {
     cardToAdd: CardModel | null
 }
 
+@inject(injector)
 @observer
 class MorningCardSelection extends React.Component<MorningCardSelectionProps, MorningCardSelectionState> {
     

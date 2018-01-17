@@ -3,7 +3,7 @@ import {Card} from './Card'
 
 export class Hand extends Stack {
 
-    constructor(objects: Card[] = []){
+    constructor(objects: Card[] = []) {
         super(objects)
     }
 
