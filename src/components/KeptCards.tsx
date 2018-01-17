@@ -1,13 +1,15 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Card as CardModel} from '../modules/Card'
 import Card from './Card'
 
-interface KeptCardsProps {
+interface KeptCardsProps extends DefaultProps {
     cards: CardModel[];
 }
 
+@inject(injector)
 @observer
 class KeptCards extends React.Component<KeptCardsProps> {
     

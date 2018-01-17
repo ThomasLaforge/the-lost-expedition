@@ -1,11 +1,14 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
+
 import {Logger as LoggerModel, Log as LogInterface} from '../modules/Logger'
 
-interface LogProps {
+interface LogProps extends DefaultProps {
     log: LogInterface
 }
 
+@inject(injector)
 @observer
 class Log extends React.Component<LogProps> {
     constructor(props: LogProps) {

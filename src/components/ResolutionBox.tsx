@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Game as GameModel} from '../modules/Game'
 import {Card as CardModel} from '../modules/Card'
@@ -12,7 +13,7 @@ import Card from './Card'
 import Action from './Action'
 import SelectedActionsBox from './SelectedActionsBox'
 
-interface ResolutionBoxProps {
+interface ResolutionBoxProps extends DefaultProps {
     game: GameModel;
     card: CardModel;
 }
@@ -24,6 +25,7 @@ interface ResolutionBoxStates {
     selectedActions: ActionModel[];
 }
 
+@inject(injector)
 @observer
 class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxStates> {
     

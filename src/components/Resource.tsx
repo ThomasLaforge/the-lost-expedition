@@ -1,12 +1,14 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Resource as ResourceModel} from '../modules/Resource'
 
-interface ResourceProps {
+interface ResourceProps extends DefaultProps {
     resource: ResourceModel;
 }
 
+@inject(injector)
 @observer
 class Resource extends React.Component<ResourceProps> {
     constructor(props: ResourceProps) {

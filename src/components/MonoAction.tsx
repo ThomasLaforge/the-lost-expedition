@@ -1,12 +1,14 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {MonoAction as MonoActionModel} from '../modules/MonoAction'
 
-interface MonoActionProps {
+interface MonoActionProps extends DefaultProps {
     monoAction: MonoActionModel;
 }
 
+@inject(injector)
 @observer
 class MonoAction extends React.Component<MonoActionProps> {
     

@@ -1,14 +1,15 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Road as RoadModel} from '../modules/Road'
 
-
-interface RoadPartProps {
+interface RoadPartProps extends DefaultProps {
     number: number;
     playerPosition: number;
 }
 
+@inject(injector)
 @observer
 class RoadPart extends React.Component<RoadPartProps> {
     constructor(props: RoadPartProps) {

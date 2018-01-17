@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Action as ActionModel} from '../modules/Action'
 import {ResolvedActionOptions} from '../modules/TheLostExpedition'
@@ -11,7 +12,7 @@ import Action from './Action'
 import MonoAction from './MonoAction'
 import MonoActionChoices from './MonoActionChoices'
 
-interface SelectedActionsBoxProps {
+interface SelectedActionsBoxProps extends DefaultProps {
     actions: ActionModel[],
     game: Game
 }
@@ -23,6 +24,7 @@ interface SelectedActionsBoxState {
     currentMonoAction: MonoActionModel
 }
 
+@inject(injector)
 @observer
 class SelectedActionsBox extends React.Component<SelectedActionsBoxProps, SelectedActionsBoxState> {
     

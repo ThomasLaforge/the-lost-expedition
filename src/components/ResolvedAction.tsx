@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {MonoAction as MonoActionModel} from '../modules/MonoAction'
 import {ResolvedActionOptions} from '../modules/TheLostExpedition'
@@ -8,13 +9,14 @@ import { ResolvedAction as ResolvedActionModel } from '../modules/ResolvedAction
 import Card from './Card'
 import Hero from './Hero'
 
-interface ResolvedActionProps {
+interface ResolvedActionProps extends DefaultProps {
     option: ResolvedActionOptions
 }
 
 interface ResolvedActionState {
 }
 
+@inject(injector)
 @observer
 class ResolvedAction extends React.Component<ResolvedActionProps> {
     

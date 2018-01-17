@@ -1,16 +1,18 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Hand as HandModel} from '../modules/Hand'
 import {Card as CardModel} from '../modules/Card'
 import Card from './Card'
 
-interface HandProps {
+interface HandProps extends DefaultProps {
     hand: HandModel;
     mustPlayCard: boolean;
     playCard?: Function;
 }
 
+@inject(injector)
 @observer
 class Hand extends React.Component<HandProps> {
     constructor(props: HandProps) {

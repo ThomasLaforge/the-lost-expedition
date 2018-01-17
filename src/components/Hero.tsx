@@ -1,14 +1,16 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Hero as HeroModel} from '../modules/Hero'
 
 import Resource from './Resource'
 
-interface HeroProps {
+interface HeroProps extends DefaultProps {
     hero: HeroModel
 }
 
+@inject(injector)
 @observer
 class Hero extends React.Component<HeroProps> {
     constructor(props: HeroProps) {

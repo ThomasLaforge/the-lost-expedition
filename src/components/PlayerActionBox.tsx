@@ -1,17 +1,19 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Game as GameModel} from '../modules/Game'
 import {Card as CardModel} from '../modules/Card'
 import {Side} from '../modules/TheLostExpedition'
 
-interface HeroesProps {
+interface HeroesProps extends DefaultProps {
     side: Side;
     onClickChangeSide: Function;
     card: CardModel | null;
     playCard?: Function;    
 }
 
+@inject(injector)
 @observer
 class Heroes extends React.Component<HeroesProps> {
     

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
 // import Road from './Road';
 import PlayZone from './PlayZone';
@@ -7,10 +8,10 @@ import InfoZone from './InfoZone';
 
 import {Game as GameModel} from '../modules/Game'
 
-interface GameProps {
-    game: GameModel
+interface GameProps extends DefaultProps {
 }
 
+@inject(injector)
 @observer
 class Game extends React.Component <GameProps> {
 

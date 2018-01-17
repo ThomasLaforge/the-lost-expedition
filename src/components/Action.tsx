@@ -1,17 +1,20 @@
 import * as React from 'react';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
+
 
 import {Action as ActionModel} from '../modules/Action'
 import {EnumStringifier} from '../modules/TheLostExpedition'
 
 import MonoAction from './MonoAction'
 
-interface ActionProps {
+interface ActionProps extends DefaultProps {
     action: ActionModel;
     onClick?: Function;
     selected?: boolean;
 }
 
+@inject(injector)
 @observer
 class Action extends React.Component<ActionProps> {
     
