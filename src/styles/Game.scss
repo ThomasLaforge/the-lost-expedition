@@ -68,13 +68,22 @@ $roadHeight : 200px;
     .card {
 
         .card-img{
-            width: 180px;
             height: 320px;
             filter:contrast(150%);
+    
         }
     }
+}
 
-    // .resolution-box {
-    // }
-
+$cardWidthRatio : 680/1000; 
+$cardHeight: 500px;
+@for $i from 2 through 3 {
+    .card-img-#{$i} {
+        height: $cardHeight;
+        width: $cardWidthRatio * $cardHeight;
+        background-image: url('../assets/img/cards/' + $i + '.png');
+        background-size: cover;
+        background-position:center center;
+        background-repeat:no-repeat;
+    }
 }

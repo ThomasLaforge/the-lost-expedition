@@ -21,7 +21,7 @@ class CardCollection extends React.Component<CardCollectionProps, CardCollection
     }
 
     renderCards(){
-        return this.state.cards.map(c => <Card imgMode={true} card={c} />)
+        return this.state.cards.map( (c, k) => <Card key={k} imgMode={true} card={c} />)
     }
 
     render() {

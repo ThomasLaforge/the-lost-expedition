@@ -39,12 +39,14 @@ class Card extends React.Component<CardProps> {
                         {/* {this.renderActions()} */}
                     </div>
                 }
-                <div className="card-title">
-                    <div className="card-number">{card.number}</div>
-                    <div className="card-title-separator">-</div>
-                    <div className="card-name">{card.name}</div>
-                </div>
-                {/* <img src='./img/4.png' className="card-img" /> */}
+                {!this.props.imgMode ? 
+                    <div className="card-title">
+                        <div className="card-number">{card.number}</div>
+                        <div className="card-title-separator">-</div>
+                        <div className="card-name">{card.name}</div>
+                    </div>
+                    : <div className={"card-img " + 'card-img-' + this.props.card.number}  />
+                }
             </div>
         );
     }

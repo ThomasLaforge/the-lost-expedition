@@ -13,7 +13,7 @@ export class Card {
         this.number = number
         this.name = name;
         this.actionCollection = actionCollection
-        this.imgPath = this.number + '.jpg'
+        this.imgPath = 'img/cards/' + this.number + '.png'
     }
 
     // Wrappers
