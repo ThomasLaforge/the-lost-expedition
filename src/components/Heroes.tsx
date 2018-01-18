@@ -6,7 +6,6 @@ import {Hero as HeroModel} from '../modules/Hero'
 import Hero from './Hero'
 
 interface HeroesProps extends DefaultProps {
-    heroes: HeroModel[];
 }
 
 @inject(injector)
@@ -19,8 +18,10 @@ class Heroes extends React.Component<HeroesProps> {
         };
     }
 
+    get heroes(){ return this.props.game.player.heroesCollection.heroes }
+    
     renderHeroes(){
-        return this.props.heroes.map( (h, k) => {
+        return this.heroes.map( (h, k) => {
             return <Hero key={k} hero={h} />
         })
     }

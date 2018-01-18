@@ -6,7 +6,6 @@ import {Card as CardModel} from '../modules/Card'
 import Card from './Card'
 
 interface KeptCardsProps extends DefaultProps {
-    cards: CardModel[];
 }
 
 @inject(injector)
@@ -19,8 +18,10 @@ class KeptCards extends React.Component<KeptCardsProps> {
         };
     }
 
+    get cards(){ return this.props.game.keptCards.objects }
+
     renderKeptCards(){
-        return this.props.cards.map( (c, k) => {
+        return this.cards.map( (c, k) => {
             return <Card key={k} card={c} />
         })
     }

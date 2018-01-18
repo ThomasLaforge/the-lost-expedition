@@ -5,7 +5,6 @@ import { DefaultProps, injector } from '../lib/mobxInjector'
 import {Stock as StockModel} from '../modules/Stock'
 
 interface StockProps extends DefaultProps {
-    stock: StockModel;
 }
 
 @inject(injector)
@@ -18,10 +17,12 @@ class BulletStock extends React.Component<StockProps> {
         };
     }
 
+    get stock(){ return this.props.game.player.bulletStock }
+
     render() {
         return (
             <div className="food-stock">
-                Bullets : {this.props.stock.stockSize}
+                Bullets : {this.stock.stockSize}
             </div>
         );
     }

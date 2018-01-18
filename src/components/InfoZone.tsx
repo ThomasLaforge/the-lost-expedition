@@ -9,6 +9,7 @@ import {Side} from '../modules/TheLostExpedition'
 import TimeToken from './TimeToken';
 import Deck from './Deck';
 import Heroes from './Heroes';
+import Road from './Road';
 import Stocks from './Stocks';
 import KeptCards from './KeptCards';
 import PlayerActionBox from './PlayerActionBox';
@@ -31,17 +32,15 @@ class InfoZone extends React.Component<InfoZoneProps, InfoZoneState> {
 
 
     render() {
-        let game = this.props.game
-        let player = game.player
 
         return (
             <div className="game-info">
-                {/* <Road road={game.road} /> */}
-                <Deck deck={game.deck} />
-                <TimeToken morning={game.morning} />
-                <Stocks bulletStock={player.bulletStock} foodStock={player.foodStock} />
-                <Heroes heroes={player.heroesCollection.heroes} />
-                <KeptCards cards={game.keptCards.objects} />
+                <Road />
+                <Deck />
+                <TimeToken />
+                <Stocks />
+                <Heroes />
+                <KeptCards />
             </div>
         );
     }

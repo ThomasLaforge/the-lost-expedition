@@ -3,7 +3,6 @@ import {observer, inject} from 'mobx-react';
 import { DefaultProps, injector } from '../lib/mobxInjector'
 
 interface TimeTokenProps extends DefaultProps {
-    morning: boolean;
 }
 
 @inject(injector)
@@ -15,8 +14,10 @@ class TimeToken extends React.Component<TimeTokenProps> {
         };
     }
 
+    get morning(){ return this.props.game.morning }
+
     timeToken() {
-        return this.props.morning ? 'Morning' : 'Evening'
+        return this.morning ? 'Morning' : 'Evening'
     }
 
     render() {

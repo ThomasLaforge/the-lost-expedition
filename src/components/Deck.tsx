@@ -5,7 +5,6 @@ import { DefaultProps, injector } from '../lib/mobxInjector'
 import {Deck as DeckModel} from '../modules/Deck'
 
 interface DeckProps extends DefaultProps {
-    deck: DeckModel;
 }
 
 @inject(injector)
@@ -18,10 +17,12 @@ class Deck extends React.Component<DeckProps> {
         };
     }
 
+    get deck(){ return this.props.game.deck}
+
     render() {
         return (
             <div className="deck">
-                {this.props.deck.length() > 0 ? 'not empty' : 'empty'}
+                {this.deck.length() > 0 ? 'not empty' : 'empty'}
             </div>
         );
     }
