@@ -8,9 +8,11 @@ export class Hero {
     @observable private _resource: Resource;
     @observable private _pvStock: Stock;
     @observable private _name: string;
-    @observable private _imgPath: string;
+	@observable private _imgPath: string;
+	@observable private _id: number;
 
-    constructor(name: string, resource: Resource, pvStock = new Stock(undefined, 4)){
+    constructor(id: number, name: string, resource: Resource, pvStock = new Stock(undefined, 4)){
+		this.id = id
         this.name = name
 		this.pvStock = pvStock
 		this.resource = resource
@@ -60,5 +62,12 @@ export class Hero {
 	public set imgPath(value: string) {
 		this._imgPath = value;
 	}
+	public get id(): number {
+		return this._id;
+	}
+	public set id(value: number) {
+		this._id = value;
+	}
+	
 
 }

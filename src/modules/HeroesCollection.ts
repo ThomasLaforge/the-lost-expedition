@@ -25,9 +25,9 @@ export class HeroesCollection {
 
     loadHeroes(){
         let heroes: Hero[] = []
-        json_heroes.forEach( (hero: HeroJSON) => {
+        json_heroes.forEach( (hero: HeroJSON, i: number) => {
             if(hero.hasOwnProperty('name') && hero.hasOwnProperty('resource')){
-                heroes.push( new Hero(hero.name, new Resource(hero.resource)) );
+                heroes.push( new Hero(i + 1, hero.name, new Resource(hero.resource)) );
             }
             else {
                 console.log('hero not valid', hero)

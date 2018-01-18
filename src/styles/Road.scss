@@ -1,27 +1,42 @@
+$nbRoadPart : 9;
+
 .road {
     display: flex;
     flex-direction: row;
 
     .road-part {
-        width: 1/8 * 100%;
-        background-color: green;
-        border: 1px white solid;
-        border-radius: 10px;
+        height: 100%;
+        width: 1 / $nbRoadPart * 100%;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        .road-part-current-position {
+            $diameter: 20px;
+            width: $diameter;
+            min-width: $diameter;
+            height: $diameter;
+            min-height: $diameter;
+            background-color: yellow;
+            border-radius: 100%;
+            margin: auto;
+        }
     }
 
-    .road-part-current-position {
-        $diameter: 20px;
-        width: $diameter;
-        min-width: $diameter;
-        height: $diameter;
-        min-height: $diameter;
-        background-color: yellow;
-        border-radius: $diameter;
-
-        margin: auto;
+    @for $i from 1 through $nbRoadPart {
+        .road-part-#{$i} {
+            .road-part-discovered, .road-part-hidden {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;        
+                height: 100%;
+                background-size: contain;
+                background-position:center center;
+                background-repeat:no-repeat;
+            }
+            .road-part-discovered {
+                background-image: url('../assets/img/road/discovered/' + $i + '.png');
+            }
+            .road-part-hidden {
+                background-image: url('../assets/img/road/hidden/' + $i + '.png');                
+            }
+        }
     }
 }

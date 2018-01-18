@@ -22,13 +22,7 @@ class Hero extends React.Component<HeroProps> {
     render() {
         let hero = this.props.hero
         return (
-            <div className="hero">
-                <div className="hero-resource">
-                    <Resource resource={hero.resource} />
-                </div>
-                <div className="hero-pv">PV : {hero.pvStock.stockSize}</div>
-                <div className="hero-name">{hero.name}</div>
-            </div>
+            <div className={'hero hero-' + this.props.hero.id + ' hero-' + (this.props.hero.isAlive() ? 'alive' : 'dead') } />
         );
     }
 }

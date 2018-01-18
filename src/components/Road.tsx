@@ -44,7 +44,7 @@ class RoadPart extends React.Component<RoadPartProps> {
 
     render() {
         return ( 
-            <div className={'road-part road-part-' + this.props.index}>
+            <div className={'road-part road-part-' + (this.props.index + 1)}>
                 {this.isDiscovered ? this.renderDiscoveredFace() : this.renderHiddenFace()}
             </div>
         );
