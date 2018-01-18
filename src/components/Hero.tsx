@@ -16,13 +16,29 @@ class Hero extends React.Component<HeroProps> {
     constructor(props: HeroProps) {
         super(props);
         this.state = {
+            bool: true
         };
+    }
+
+    renderPVs(){
+        let pvDivs = []
+        for (let i = 0; i < this.props.hero.pvStock.stockSize; i++) {
+            pvDivs.push(<div className='hero-health-pv' />)            
+        }
+        return pvDivs
     }
 
     render() {
         let hero = this.props.hero
         return (
-            <div className={'hero hero-' + this.props.hero.id + ' hero-' + (this.props.hero.isAlive() ? 'alive' : 'dead') } />
+            <div className='hero'>
+                <div className={'hero-' + hero.id + ' hero-' + (hero.isAlive() ? 'alive' : 'dead') } />
+                {hero.isAlive() && 
+                    <div className={'hero-health'}>
+                        {this.renderPVs()}
+                    </div>
+                }
+            </div>
         );
     }
 }

@@ -4,6 +4,7 @@ import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import BulletStock from './BulletStock'
 import FoodStock from './FoodStock'
+import '../styles/Stocks.scss';
 
 interface StockProps extends DefaultProps {
 }

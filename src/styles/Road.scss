@@ -30,6 +30,7 @@ $nbRoadPart : 9;
                 background-size: contain;
                 background-position:center center;
                 background-repeat:no-repeat;
+                filter:contrast(130%);
             }
             .road-part-discovered {
                 background-image: url('../assets/img/road/discovered/' + $i + '.png');

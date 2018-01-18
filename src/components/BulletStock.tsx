@@ -19,10 +19,18 @@ class BulletStock extends React.Component<StockProps> {
 
     get stock(){ return this.props.game.player.bulletStock }
 
+    renderBullet(){
+        let bullets = []
+        for (let i = 0; i < this.stock.stockSize; i++) {
+            bullets.push(<div className='bullet-stock-elt' />)            
+        }
+        return bullets
+    }
+
     render() {
         return (
-            <div className="food-stock">
-                Bullets : {this.stock.stockSize}
+            <div className="bullet-stock">
+                {this.renderBullet()}
             </div>
         );
     }

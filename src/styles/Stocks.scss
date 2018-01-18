@@ -1,0 +1,27 @@
+.stocks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+
+    .food-stock, .bullet-stock {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .bullet-stock-elt {
+            width: 70px;
+            height: 40px;
+            border: 1px red solid;
+        }
+
+        .food-stock-elt {
+            border-radius: 40px;
+            width: 40px;
+            height: 40px;
+            border: 1px red solid;
+        }
+    }
+}

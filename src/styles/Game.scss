@@ -63,15 +63,17 @@ $roadHeight : 200px;
     
     .hand-must-play-card {
         border: 3px solid green;
+        width: 1 / 6 * 100%;
     }
 }
 
 $cardWidthRatio : 68 / 100; 
-$deckSize: 7;
+$deckSize: 7; //56;
 @for $i from 2 through $deckSize {
+    $card_path: '../assets/img/cards/' + $i + '.png';
     .card-img-#{$i} {
         height: 100%;
-        background-image: url('../assets/img/cards/' + $i + '.png');
+        background-image: url($card_path);
         background-size: contain;
         background-position:center center;
         background-repeat:no-repeat;

@@ -13,20 +13,12 @@ interface RoadPartProps extends DefaultProps {
 class RoadPart extends React.Component<RoadPartProps> {
     constructor(props: RoadPartProps) {
         super(props);
-        this.state = {
-        };
+        this.state = {};
     }
 
-    get road(){
-        return this.props.game.road
-    }
-
-    get isCurrentPosition(){
-        return this.props.index === this.road.position
-    }
-    get isDiscovered(){
-        return this.isCurrentPosition || this.props.index < this.road.position
-    }
+    get road(){ return this.props.game.road }
+    get isCurrentPosition(){ return this.props.index === this.road.position }
+    get isDiscovered(){ return this.isCurrentPosition || this.props.index < this.road.position }
 
     renderHiddenFace(){
         return (

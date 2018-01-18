@@ -16,14 +16,17 @@ class TimeToken extends React.Component<TimeTokenProps> {
 
     get morning(){ return this.props.game.morning }
 
-    timeToken() {
-        return this.morning ? 'Morning' : 'Evening'
+    renderMorning(){
+        return <div className='time-token-morning'>Morning</div>
+    }
+    renderEvening(){
+        return <div className='time-token-evening'>Evening</div>
     }
 
     render() {
         return (
             <div className="time-token">
-                {this.timeToken()}
+                {this.morning ? this.renderMorning() : this.renderEvening()}
             </div>
         );
     }

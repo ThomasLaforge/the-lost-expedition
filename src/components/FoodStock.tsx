@@ -19,10 +19,18 @@ class FoodStock extends React.Component<StockProps> {
 
     get stock(){ return this.props.game.player.foodStock }
 
+    renderFood(){
+        let food = []
+        for (let i = 0; i < this.stock.stockSize; i++) {
+            food.push(<div className='food-stock-elt' />)            
+        }
+        return food
+    }
+
     render() {
         return (
             <div className="food-stock">
-                Food : {this.stock.stockSize}
+                {this.renderFood()}
             </div>
         );
     }
