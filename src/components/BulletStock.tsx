@@ -22,7 +22,7 @@ class BulletStock extends React.Component<StockProps> {
     renderBullet(){
         let bullets = []
         for (let i = 0; i < this.stock.stockSize; i++) {
-            bullets.push(<div className='bullet-stock-elt' />)            
+            bullets.push(<div className='bullet-stock-elt' key={i} />)            
         }
         return bullets
     }

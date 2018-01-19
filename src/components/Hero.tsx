@@ -23,7 +23,7 @@ class Hero extends React.Component<HeroProps> {
     renderPVs(){
         let pvDivs = []
         for (let i = 0; i < this.props.hero.pvStock.stockSize; i++) {
-            pvDivs.push(<div className='hero-health-pv' />)            
+            pvDivs.push(<div className='hero-health-pv' key={i} />)            
         }
         return pvDivs
     }
