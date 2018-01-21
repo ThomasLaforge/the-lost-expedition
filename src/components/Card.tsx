@@ -34,7 +34,7 @@ class Card extends React.Component<CardProps> {
 
     render() {
         let card = this.props.card
-        console.log('this.props.imgMode', this.props.imgMode, typeof this.props.imgMode !== 'undefined' && !this.props.imgMode)
+        // console.log('this.props.imgMode', this.props.imgMode, typeof this.props.imgMode !== 'undefined' && !this.props.imgMode)
         return (
             <div className={'card card-' + card.number} onClick={() => this.handleClick()}>
                 {!this.props.imgMode && this.props.withActions && 

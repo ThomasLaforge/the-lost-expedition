@@ -8,9 +8,11 @@ import {Deck} from '../modules/Deck'
 import {Store, UIStore} from '../modules/Store'
 
 interface CardCollectionProps extends DefaultProps {
+    showCollection?: boolean
 }
 interface CardCollectionState {
     cards: CardModel[]
+    showCollection: boolean
 }
 
 @inject(injector)
@@ -19,7 +21,8 @@ class CardCollection extends React.Component<CardCollectionProps, CardCollection
     constructor(props: CardCollectionProps) {
         super(props);
         this.state = {
-            cards: new Deck(null, false).cards
+            cards: new Deck(null, false).cards,
+            showCollection: !!this.props.showCollection
         };
     }
 
@@ -30,7 +33,10 @@ class CardCollection extends React.Component<CardCollectionProps, CardCollection
     render() {
         return (
             <div className='card-collection'>
-                {this.renderCards()}
+                <button onClick={() => this.setState({showCollection: !this.state.showCollection})}>
+                    {this.state.showCollection ? 'hide collection' : 'show collection'}
+                </button>
+                {this.state.showCollection && this.renderCards()}
             </div>
         );
     }

@@ -74,7 +74,6 @@ export class Game {
     }
 
     playerPlayCardForCardToPlace(card: Card){
-        this.player.hand.remove(card)
         this.cardToPlace = card
     }
 
@@ -95,8 +94,11 @@ export class Game {
 
     playerPlayCard(c: Card, side?: Side){
         // console.log('side to play', side
-        this.player.hand.remove(c);
-        this.playedCards.add(c, side);
+        this.player.hand.remove(c)
+        this.playedCards.add(c, side)
+        if(this.morning){
+            this.orderPlayedCards()
+        }
         if(this.morning && this.playedCards.length === 4){
             this.drawCardsForPlayedCards()
         }
@@ -107,11 +109,8 @@ export class Game {
         if(this.playedCards.indexOf(c) === 0){
             // Check if all forced choices are done
             if(choices){
-                let toKeep = false
-                // Complete differents actions
-                choices.actions.forEach(action => {
-                    toKeep = toKeep || this.resolveAction(c, action)
-                })
+                // resolve all action
+                let toKeep = choices.actions.filter(action => this.resolveAction(c, action)).length > 0
                 // Mark card as completed -> go to next card
                 if(toKeep){
                     this.keptCards.add(c)
@@ -122,11 +121,18 @@ export class Game {
                 }
             }
             else {
-                throw new Error("can't resolbe cause all forced choices are not done")
+                throw new Error("can't resolve cause all forced choices are not done")
             }
         }
         else {
             throw new Error("resolve a card who is not the first one")
+        }
+    }
+    autoResolveCard(card: Card, choices: ActionSelection){
+        if(this.cardCanBeAutoResolved(card, choices)){
+            choices.actions.forEach(action => {
+                action.
+            });
         }
     }
 
@@ -240,9 +246,18 @@ export class Game {
         return toKeep;
     }
 
+    cardCanBeAutoResolved(choices: ActionSelection){
+        return choices.actions.filter(a => this.actionNeedOptions(a)).length === 0
+    }
     actionNeedOptions(action: Action){
-        let monoActionsWithOptions = action.monoActions.filter( ma => this.getOptionsForMonoAction(ma).length > 0 )
+        let monoActionsWithOptions = action.monoActions.filter( ma => this.monoActionHasManyOptions(ma))
         return monoActionsWithOptions.length > 0
+    }
+    monoActionHasOptions(monoAction: MonoAction){
+        return this.getOptionsForMonoAction(monoAction).length > 0
+    }
+    monoActionHasManyOptions(monoAction: MonoAction){
+        return this.getOptionsForMonoAction(monoAction).length > 1
     }
 
     getOptionsForMonoAction(monoAction: MonoAction){

@@ -17,7 +17,7 @@ interface ResolutionBoxProps extends DefaultProps {
     card: CardModel;
 }
 
-interface ResolutionBoxStates {
+interface ResolutionBoxState {
     optionalActionChoice?: ActionModel[];
     choiceActionChoice?: ActionModel;
     selectingActions: boolean;
@@ -26,7 +26,7 @@ interface ResolutionBoxStates {
 
 @inject(injector)
 @observer
-class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxStates> {
+class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxState> {
     
     constructor(props: ResolutionBoxProps) {
         super(props);
@@ -39,8 +39,10 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
     }
 
     handleResolve(){
-        console.log('resolve', this.state.choiceActionChoice, this.state.optionalActionChoice)
-        // this.props.game.resolveCard(this.props.card, this.())
+        // this.props.game.resolveCard(this.props.card)
+    }
+    handleAutoResolve(){
+        this.props.game.autoResolve(this.props.card)
     }
 
     handleClickOnOptionalAction(newChoice: ActionModel){
@@ -102,34 +104,45 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
     }
 
     renderSelectedActionOptions(): JSX.Element{
-        return <SelectedActionsBox 
+        return <SelectedActionsBox
             actions={this.state.selectedActions}
         />
     }
 
     canEndSelection(){
         let choicesActionLength = this.props.card.actionCollection.getChoiceActions().length
-        console.log('can end selection', choicesActionLength === 0, this.state.choiceActionChoice !== null)
+        // console.log('can end selection', choicesActionLength === 0, this.state.choiceActionChoice !== null)
         return choicesActionLength === 0 || this.state.choiceActionChoice !== null
     }
 
     endingSelectAction() { 
         console.log('ending selecting actions')
         if( this.canEndSelection()){
-            let seletectedActions = this.state.selectedActions.concat(this.state.optionalActionChoice, this.state.choiceActionChoice ? [this.state.choiceActionChoice] : [])
-            if(seletectedActions.length === 0){
+            let selectedActions = this.state.selectedActions.concat(this.state.optionalActionChoice, this.state.choiceActionChoice ? [this.state.choiceActionChoice] : [])
+            if(selectedActions.length === 0){
                 console.log('resolve an empty card')
             } 
             else {
+                console.log('all actions selected', selectedActions)
+                let actionsWhoNeedOptions = selectedActions.filter(action => this.props.game.actionNeedOptions(action))
+                let actionsNeedOptions = actionsWhoNeedOptions.length > 0
+
                 this.setState({
                     selectingActions: false,
-                    selectedActions: seletectedActions
+                    selectedActions: selectedActions
+                }, () => {
+                    if(actionsNeedOptions) {
+                        this.handleResolve()
+                    }
+                    else {
+                        actionsWhoNeedOptions.forEach(action => {})
+                    }
                 })
             }
         }
     }
 
-    renderButton(){
+    renderResolveBtn(){
         return (
             <button disabled={!this.state.selectingActions || !this.canEndSelection()} onClick={() => { this.state.selectingActions ? this.endingSelectAction() : this.handleResolve()}}>
                 {this.state.selectingActions ? 'Ending selection' : 'Resolve'}
@@ -145,7 +158,7 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
                     <Card card={this.props.card} />
                 </div>
                 {this.state.selectingActions ? this.renderActions() : this.renderSelectedActionOptions()}
-                {this.renderButton()}
+                {this.renderResolveBtn()}
             </div>
         );
     }

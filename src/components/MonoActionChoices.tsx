@@ -29,24 +29,10 @@ class MonoActionChoices extends React.Component<MonoActionChoicesProps> {
         };
     }
 
-    renderStoryOfChoice(){
-        let monoAction = this.props.monoAction
-        // if(monoAction)
-    }
-    
-    renderChoices(): JSX.Element {
-        return (
-            <div>
-                {this.props.choices.map(c => <ResolvedAction option={c} /> )}
-            </div>
-        )
-    }
-
     render() {
         return (
             <div className="mono-action-choices">
-                {this.renderStoryOfChoice()}
-                {this.renderChoices()}
+                {this.props.choices.map( (c, k) => <ResolvedAction key={k} option={c} /> )}
             </div>
         );
     }

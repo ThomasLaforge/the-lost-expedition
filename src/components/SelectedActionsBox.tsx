@@ -29,6 +29,9 @@ class SelectedActionsBox extends React.Component<SelectedActionsBoxProps, Select
     
     constructor(props: SelectedActionsBoxProps) {
         super(props);
+        // get first mono action who need player to make a choice
+        
+        
         this.state = {
             currentActionToResolve: this.props.actions[0],
             currentMonoAction: this.props.actions[0].monoActions[0],
@@ -38,7 +41,7 @@ class SelectedActionsBox extends React.Component<SelectedActionsBoxProps, Select
     }
 
     renderActions(){
-        return this.props.actions.map( (a, i) => {
+        return this.props.actions.length > 1 && this.props.actions.map( (a, i) => {
             return (
                 <div className="actions-to-resolve-elt" key={i}>
                     <Action action={a} />
@@ -48,6 +51,7 @@ class SelectedActionsBox extends React.Component<SelectedActionsBoxProps, Select
     }
 
     renderCurrentAction(){
+        console.log('options', this.props.game.getOptionsForMonoAction(this.state.currentMonoAction))
         return (
             <div className='actual-action-to-resolve'>
                 <div className='actual-action-to-resolve-title'>
@@ -72,7 +76,7 @@ class SelectedActionsBox extends React.Component<SelectedActionsBoxProps, Select
     render() {
         return (
             <div className="selected-actions-box">
-                Selected Action box
+                {this.props.actions.length > 1 && 'actions to resolve'}
                 <div className="actions-to-resolve">
                     {this.renderActions()}
                 </div>

@@ -29,7 +29,7 @@ class App extends React.Component<{}, { game: GameModel} > {
           <Game />
           {/* <Logger logger={this.state.game.logger} /> */}
           <CardCollection />
-          <DevTools />
+          {/* <DevTools /> */}
         </div>
       </Provider>
     );
