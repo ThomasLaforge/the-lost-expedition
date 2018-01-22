@@ -2,6 +2,7 @@ import {observable} from 'mobx'
 
 import { ResolvedAction } from './ResolvedAction'
 
+// Collection of actions selected by user with choice to resolve the card
 export class ActionSelection {
 
     @observable private _actions: ResolvedAction[];

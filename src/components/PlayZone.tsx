@@ -37,8 +37,7 @@ class PlayZone extends React.Component<PlayZoneProps, PlayZoneState> {
 
     render() {
         let game = this.props.game
-        let cardToResolve = this.playedCards.getFirst()
-        cardToResolve = !!cardToResolve && (cardToResolve as CardModel)
+        let cardToResolve = this.playedCards.getCardToResolve()
         
         return (
             <div className="game-play-zone">

@@ -69,7 +69,7 @@ export class Game {
         this.playedCards.order()
     }
 
-    drawCardForCarToPlace(){
+    drawCardForCardToPlace(){
         this.cardToPlace = this.deck.pick(1)[0]
     }
 
@@ -128,13 +128,13 @@ export class Game {
             throw new Error("resolve a card who is not the first one")
         }
     }
-    autoResolveCard(card: Card, choices: ActionSelection){
-        if(this.cardCanBeAutoResolved(card, choices)){
-            choices.actions.forEach(action => {
-                action.
-            });
-        }
-    }
+    // autoResolveCard(card: Card, choices: ActionSelection){
+    //     if(this.cardCanBeAutoResolved(card, choices)){
+    //         choices.actions.forEach(action => {
+    //             action.
+    //         });
+    //     }
+    // }
 
     resolveAction(c: Card, action: ResolvedAction){
         let toKeep = false;
