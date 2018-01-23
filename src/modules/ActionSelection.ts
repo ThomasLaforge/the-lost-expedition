@@ -1,21 +1,21 @@
 import {observable} from 'mobx'
 
-import { ResolvedAction } from './ResolvedAction'
+import { Action } from './Action'
 
 // Collection of actions selected by user with choice to resolve the card
 export class ActionSelection {
 
-    @observable private _actions: ResolvedAction[];
+    @observable private _actions: Action[];
 
-    constructor(actions: ResolvedAction[]){
+    constructor(actions: Action[]){
         this.actions = actions
     }
 
     // Getters / Setters
-	public get actions(): ResolvedAction[] {
+	public get actions(): Action[] {
 		return this._actions;
 	}
-	public set actions(value: ResolvedAction[]) {
+	public set actions(value: Action[]) {
 		this._actions = value;
     }    
     

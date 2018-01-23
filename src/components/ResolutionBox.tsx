@@ -39,10 +39,12 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
     }
 
     handleResolve(){
+        console.log('handleResolve: to complete')        
         // this.props.game.resolveCard(this.props.card)
     }
     handleAutoResolve(){
-        this.props.game.autoResolve(this.props.card)
+        console.log('handleAutoResolve: to complete')
+        // this.props.game.autoResolve(this.props.card)
     }
 
     handleClickOnOptionalAction(newChoice: ActionModel){

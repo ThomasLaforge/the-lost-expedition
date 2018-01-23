@@ -9,7 +9,7 @@ export class KeptCards extends Stack {
     }
 
     getCardsWithResourceAccessible(resource: ResourceEnum){
-        return this.objects.filter(c => {
+        return this.cards.filter(c => {
             let actionsWithResource = c.actionCollection.actions.filter( a => {
                 let monoActions = a.monoActions
                 return monoActions.filter(monoAction => {

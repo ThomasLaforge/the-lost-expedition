@@ -49,10 +49,14 @@ export interface ActionJSON {
     mono_actions: MonoActionJSON[]
 }
 
-export interface ResolvedActionOptions {
+export interface ResolvedMonoActionOptions {
     hero?: Hero,
     keptCard?: Card,
     cardsToSwitch?: Card[]
+}
+
+export interface ResolvedActionOptions {
+    [index: number]: ResolvedMonoActionOptions[]
 }
 
 export class EnumStringifier {

@@ -7,12 +7,16 @@ import {Deck} from './Deck';
 import {Stack} from './Stack';
 import {KeptCards} from './KeptCards';
 import {HeroesCollection} from './HeroesCollection';
-import {Side, ResourceEnum, ResolvedActionOptions} from './TheLostExpedition'
+import {Side, ResourceEnum, ResolvedActionOptions, ResolvedMonoActionOptions} from './TheLostExpedition'
 import { ActionSelection } from './ActionSelection';
 import { ResolvedAction } from './ResolvedAction';
 import { MonoAction } from './MonoAction';
 import { Action } from './Action';
 import { Logger } from './Logger'
+import { PlayedCards } from './PlayedCards';
+import { ActionCollection } from './ActionCollection';
+import { ResolvedActionSelection } from './ResolvedActionSelection';
+import { ResolvedMonoAction } from './ResolvedMonoAction';
 
 export class Game {
 
@@ -20,14 +24,14 @@ export class Game {
     @observable private _player: Player;
     @observable private _road: Road;
     @observable private _deck: Deck;
-    @observable private _playedCards: Stack;
+    @observable private _playedCards: PlayedCards;
     @observable private _keptCards: KeptCards;
     @observable private _heroesCollection: HeroesCollection;
     @observable private _cardToPlace: Card;
     @observable private _historyMonoAction: MonoAction[];
     @observable private _logger: Logger;
 
-    constructor(player?: Player, morning = true, road = new Road(), deck = new Deck(), playedCards = new Stack([], 6), heroesCollection = new HeroesCollection(), nbHeroes = 3, keptCards = new KeptCards(), cardToPlace: Card = null, logger = new Logger(), autoStart = true ){
+    constructor(player?: Player, morning = true, road = new Road(), deck = new Deck(), playedCards = new PlayedCards(6), heroesCollection = new HeroesCollection(), nbHeroes = 3, keptCards = new KeptCards(), cardToPlace: Card = null, logger = new Logger(), autoStart = true ){
         this.heroesCollection = heroesCollection
         let playerHeroesCollection = new HeroesCollection(this.heroesCollection.getHeroesWithDistinctsResources())
         this.player = player || new Player(playerHeroesCollection)
@@ -41,6 +45,36 @@ export class Game {
         autoStart && this.startTurn()
     }
 
+/**
+ * States
+ */
+    isWon(){
+        return this.road.isComplete() && !this.isGameOver()
+    }
+    
+    isGameOver(){
+        return this.player.heroesCollection.heroes.filter(h => h.isDead()).length > 0 || this.player.foodStock.stockSize < 0;
+    }
+
+    getScore(){
+        let score = 0;
+        // marquer un point pour chaque jeton de nourriture 
+        score += this.player.foodStock.stockSize
+        // et munition restant 
+        score += this.player.bulletStock.stockSize
+        // un point pour chaque carte d'expertise inutilisée 
+        score += this.keptCards.length
+        // TODO : cinq points si vous n'avez pas encore embarqué le deck. 
+        if(true){
+            score += 5
+        }
+        // Multipliez vos points par le nombre d'explorateurs survivants
+        return score * this.player.heroesCollection.length
+    }
+    
+/**
+ * Actions
+ */
     startTurn(){
         this.drawCardsForPlayerHand(6)
         this.drawCardsForPlayedCards(2)
@@ -49,14 +83,6 @@ export class Game {
         }
     }
 
-    isWon(){
-        return this.road.isComplete() && !this.isGameOver()
-    }
-    
-    isGameOver(){
-        return this.player.heroesCollection.heroes.filter(h => h.isDead()).length > 0 || this.player.foodStock.stockSize < 0;
-    }
-    
     switchMorning(){
         if( this.player.nourrish() ){
             this.morning = !this.morning
@@ -65,6 +91,11 @@ export class Game {
             this.startTurn()
         }
     }
+
+    progress(){
+        this.road.progress()
+    }
+
     orderPlayedCards(){
         this.playedCards.order()
     }
@@ -104,7 +135,7 @@ export class Game {
         }
     }
 
-    resolveCard(c:Card, choices: ActionSelection){
+    resolveCard(c:Card, choices: ResolvedActionSelection){
         // Check if cards is the first card not played
         if(this.playedCards.indexOf(c) === 0){
             // Check if all forced choices are done
@@ -128,22 +159,20 @@ export class Game {
             throw new Error("resolve a card who is not the first one")
         }
     }
-    // autoResolveCard(card: Card, choices: ActionSelection){
-    //     if(this.cardCanBeAutoResolved(card, choices)){
-    //         choices.actions.forEach(action => {
-    //             action.
-    //         });
-    //     }
-    // }
+
+    autoResolve(card: Card){
+        let resolvedActionSelection = this.getAutoResolvedActionSelection(card)
+        this.resolveCard(card, resolvedActionSelection)
+    }
 
     resolveAction(c: Card, action: ResolvedAction){
         let toKeep = false;
-        action.monoActions.forEach( (subAction, i) => {
-            let options = action.options && action.options[i]
-            console.log('mono action to resolve', subAction)
-            switch (subAction.resource) {
+        action.monoActions.forEach( (resolvedMonoAction, i) => {
+            let options = resolvedMonoAction.options
+            console.log('mono action to resolve', options)
+            switch (resolvedMonoAction.resource) {
                 case ResourceEnum.Bullet:
-                    if(subAction.drop){
+                    if(resolvedMonoAction.drop){
                         this.player.bulletStock.remove()
                     }
                     else {
@@ -151,7 +180,7 @@ export class Game {
                     }
                     break;
                 case ResourceEnum.Food:
-                    if(subAction.drop){
+                    if(resolvedMonoAction.drop){
                         this.player.foodStock.remove()
                     }
                     else {
@@ -165,7 +194,7 @@ export class Game {
                     if(options && options.hero){
                         let playerExist = this.player.heroesCollection.getIndex(options.hero) !== -1 
                         if( playerExist ){
-                            if(subAction.drop){
+                            if(resolvedMonoAction.drop){
                                 options.hero.losePV()
                             }
                             else {
@@ -197,8 +226,8 @@ export class Game {
                 case ResourceEnum.Leaf:
                 case ResourceEnum.Camp:
                 case ResourceEnum.Compass:
-                    console.log('compass', subAction.drop)
-                    if(subAction.drop){
+                    console.log('compass', resolvedMonoAction.drop)
+                    if(resolvedMonoAction.drop){
                         if(options){
                             if(options.keptCard){
                                 console.log('use a kept card')
@@ -206,8 +235,8 @@ export class Game {
                             else if(options.hero){
                                 let hero = this.player.heroesCollection.getHero(options.hero)
                                 if(hero){
-                                    if(subAction.drop){
-                                        hero.losePV(hero.resource.type === subAction.resource ? 1 : 2)
+                                    if(resolvedMonoAction.drop){
+                                        hero.losePV(hero.resource.type === resolvedMonoAction.resource ? 1 : 2)
                                     }
                                 }
                             }
@@ -246,23 +275,33 @@ export class Game {
         return toKeep;
     }
 
-    cardCanBeAutoResolved(choices: ActionSelection){
-        return choices.actions.filter(a => this.actionNeedOptions(a)).length === 0
+/**
+ * Get informations
+ */
+    getAutoResolvedActionSelection(card: Card){
+        let actionSelection = card.getAutoActionSelectionFromCard()
+        let resolvedActions: ResolvedAction[] = actionSelection.actions.map(a => {
+            let resolvedMonoActions = a.monoActions.map(monoAction => {
+                let option: ResolvedMonoActionOptions = this.getOptionsForMonoAction(monoAction)[0]
+                return new ResolvedMonoAction(monoAction.resource, monoAction.drop, option)
+            })
+            return new ResolvedAction(a.type, resolvedMonoActions)
+        })
+        return new ResolvedActionSelection(resolvedActions);
     }
-    actionNeedOptions(action: Action){
-        let monoActionsWithOptions = action.monoActions.filter( ma => this.monoActionHasManyOptions(ma))
-        return monoActionsWithOptions.length > 0
-    }
-    monoActionHasOptions(monoAction: MonoAction){
-        return this.getOptionsForMonoAction(monoAction).length > 0
-    }
-    monoActionHasManyOptions(monoAction: MonoAction){
-        return this.getOptionsForMonoAction(monoAction).length > 1
+
+    getNextCardToResolve(){
+        let firstCard = this.playedCards.getFirst();
+        while(this.cardCanBeAutoResolved(firstCard)){
+            this.autoResolve(firstCard)
+            firstCard = this.playedCards.getFirst();
+        }
+        return firstCard
     }
 
     getOptionsForMonoAction(monoAction: MonoAction){
         console.log('monoAction get options', monoAction)
-        let options: ResolvedActionOptions[] = [];
+        let options: ResolvedMonoActionOptions[] = [];
         switch(monoAction.resource) {
             case ResourceEnum.PV:
             case ResourceEnum.Life:
@@ -304,27 +343,37 @@ export class Game {
         return options
     }
 
-    progress(){
-        this.road.progress()
+/**
+ * Tests / Questions
+ */
+    cardHaveAutoActionSelection(card: Card){
+        return card.cardHaveAutoActionSelection()
     }
 
-    getScore(){
-        let score = 0;
-        // marquer un point pour chaque jeton de nourriture 
-        score += this.player.foodStock.stockSize
-        // et munition restant 
-        score += this.player.bulletStock.stockSize
-        // un point pour chaque carte d'expertise inutilisée 
-        score += this.keptCards.length
-        // TODO : cinq points si vous n'avez pas encore embarqué le deck. 
-        if(true){
-            score += 5
-        }
-        // Multipliez vos points par le nombre d'explorateurs survivants
-        return score * this.player.heroesCollection.length
+    cardCanBeAutoResolved(card: Card){
+        return this.cardHaveAutoActionSelection(card) && this.actionSelectionCanBeAutoResolved(card.getAutoActionSelectionFromCard())
+    }
+    
+    actionSelectionCanBeAutoResolved(choices: ActionSelection){
+        return choices.actions.filter(a => this.actionNeedOptions(a)).length === 0
+    }
+    
+    actionNeedOptions(action: Action){
+        let monoActionsWithOptions = action.monoActions.filter( ma => this.monoActionHasManyOptions(ma))
+        return monoActionsWithOptions.length > 0
+    }
+    
+    monoActionHasOptions(monoAction: MonoAction){
+        return this.getOptionsForMonoAction(monoAction).length > 0
+    }
+    
+    monoActionHasManyOptions(monoAction: MonoAction){
+        return this.getOptionsForMonoAction(monoAction).length > 1
     }
 
-    // Getters / Setters
+/**
+ *  Getters / Setters
+ */
     public get morning(): boolean {
         return this._morning;
     }
@@ -349,10 +398,10 @@ export class Game {
 	public set deck(value: Deck) {
 		this._deck = value;
     }
-	public get playedCards(): Stack {
+	public get playedCards(): PlayedCards {
 		return this._playedCards;
 	}
-	public set playedCards(value: Stack) {
+	public set playedCards(value: PlayedCards) {
 		this._playedCards = value;
     }
 	public get heroesCollection(): HeroesCollection {

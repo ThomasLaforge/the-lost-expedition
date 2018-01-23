@@ -30,14 +30,14 @@ class PlayZone extends React.Component<PlayZoneProps, PlayZoneState> {
     get playedCards(){ return this.props.game.playedCards }
 
     renderCards(){
-        return this.playedCards.objects.map( (c, k) => {
+        return this.playedCards.cards.map( (c, k) => {
             return <Card card={c} key={k} />
         })
     }
 
     render() {
         let game = this.props.game
-        let cardToResolve = this.playedCards.getCardToResolve()
+        let cardToResolve = game.getNextCardToResolve()
         
         return (
             <div className="game-play-zone">

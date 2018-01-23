@@ -1,22 +1,24 @@
+import {ResolvedMonoAction} from './ResolvedMonoAction';
+import {ActionType} from './TheLostExpedition';
 import {observable} from 'mobx'
 
-import { Action } from './Action'
-import { ResolvedActionOptions } from './TheLostExpedition'
+import { BaseAction } from './BaseAction';
 
-export class ResolvedAction extends Action{
+export class ResolvedAction extends BaseAction{
+	
+	@observable private _monoActions: ResolvedMonoAction[];
 
-    @observable private _options: ResolvedActionOptions[];
+    constructor(type: ActionType, monoActions: ResolvedMonoAction[]){
+		super(type)
+        this.monoActions = monoActions
+    }
 
-    constructor(action: Action, options: ResolvedActionOptions[] = []){
-        super(action.type, action.monoActions)
-        this.options = options
-    }    
-
-	public get options(): ResolvedActionOptions[] {
-		return this._options;
+    // Getter / Setters
+	public get monoActions(): ResolvedMonoAction[] {
+		return this._monoActions;
 	}
-	public set options(value: ResolvedActionOptions[]) {
-		this._options = value;
+	public set monoActions(value: ResolvedMonoAction[]) {
+		this._monoActions = value;
 	}
     
 }
