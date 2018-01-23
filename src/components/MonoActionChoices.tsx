@@ -19,7 +19,7 @@ interface MonoActionChoicesState {
 
 @inject(injector)
 @observer
-class MonoActionChoices extends React.Component<MonoActionChoicesProps> {
+class MonoActionChoices extends React.Component<MonoActionChoicesProps, MonoActionChoicesState> {
     
     constructor(props: MonoActionChoicesProps) {
         super(props);
@@ -29,10 +29,19 @@ class MonoActionChoices extends React.Component<MonoActionChoicesProps> {
         };
     }
 
+    handleSelection(index: number){
+        this.setState({ selectedChoice: index })
+    }
+
     renderOptions(){
-        return this.props.choices.map( (c, k) => (
-            <MonoActionOption key={k} option={c} />
-        ))
+        return this.props.choices.map( (c, i) => {
+            return <MonoActionOption 
+                key={i} 
+                option={c} 
+                selected={this.state.selectedChoice === i}
+                onSelection={() => this.handleSelection(i)}
+            />
+        })
     }
 
     render() {
