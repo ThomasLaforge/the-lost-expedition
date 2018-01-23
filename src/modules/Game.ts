@@ -160,8 +160,8 @@ export class Game {
         }
     }
 
-    autoResolve(card: Card){
-        let resolvedActionSelection = this.getAutoResolvedActionSelection(card)
+    autoResolveCard(card: Card, actionSelection?: ActionSelection){
+        let resolvedActionSelection = this.getAutoResolvedActionSelection(card, actionSelection)
         this.resolveCard(card, resolvedActionSelection)
     }
 
@@ -278,8 +278,8 @@ export class Game {
 /**
  * Get informations
  */
-    getAutoResolvedActionSelection(card: Card){
-        let actionSelection = card.getAutoActionSelectionFromCard()
+    getAutoResolvedActionSelection(card: Card, actionSelection?: ActionSelection){
+        actionSelection = actionSelection || card.getAutoActionSelectionFromCard()
         let resolvedActions: ResolvedAction[] = actionSelection.actions.map(a => {
             let resolvedMonoActions = a.monoActions.map(monoAction => {
                 let option: ResolvedMonoActionOptions = this.getOptionsForMonoAction(monoAction)[0]
@@ -293,7 +293,8 @@ export class Game {
     getNextCardToResolve(){
         let firstCard = this.playedCards.getFirst();
         while(this.cardCanBeAutoResolved(firstCard)){
-            this.autoResolve(firstCard)
+            console.log('Look: autoResolve card', firstCard)
+            this.autoResolveCard(firstCard)
             firstCard = this.playedCards.getFirst();
         }
         return firstCard
@@ -346,12 +347,16 @@ export class Game {
 /**
  * Tests / Questions
  */
-    cardHaveAutoActionSelection(card: Card){
-        return card.cardHaveAutoActionSelection()
+    actionSelectionNeedOptions(actionSelection: ActionSelection){
+        return actionSelection.actions.filter(action => this.actionNeedOptions(action)).length > 0
+    }
+
+    cardHasAutoActionSelection(card: Card){
+        return card.hasAutoActionSelection()
     }
 
     cardCanBeAutoResolved(card: Card){
-        return this.cardHaveAutoActionSelection(card) && this.actionSelectionCanBeAutoResolved(card.getAutoActionSelectionFromCard())
+        return this.cardHasAutoActionSelection(card) && this.actionSelectionCanBeAutoResolved(card.getAutoActionSelectionFromCard())
     }
     
     actionSelectionCanBeAutoResolved(choices: ActionSelection){

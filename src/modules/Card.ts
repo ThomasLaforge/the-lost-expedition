@@ -36,7 +36,7 @@ export class Card {
      * return only action who don't need user selection =>  return actionSelect with "must do" actions
      * cause options can or not be chosen, and choice action need a choice.
      */
-    cardHaveAutoActionSelection(){
+    hasAutoActionSelection(){
         return this.getChoiceActions().length === 0 && this.getOptionalActions.length === 0
     }
     getAutoActionSelectionFromCard(): ActionSelection{

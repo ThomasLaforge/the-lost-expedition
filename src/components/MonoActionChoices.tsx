@@ -3,18 +3,18 @@ import {observer, inject} from 'mobx-react';
 import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {MonoAction as MonoActionModel} from '../modules/MonoAction'
-import {ResolvedActionOptions} from '../modules/TheLostExpedition'
+import {ResolvedActionOptions, ResolvedMonoActionOptions} from '../modules/TheLostExpedition'
 import { ResolvedAction as ResolvedActionModel } from '../modules/ResolvedAction';
 
-import ResolvedAction from './ResolvedAction'
+import MonoActionOption from './MonoActionOption'
 
 interface MonoActionChoicesProps extends DefaultProps {
     monoAction: MonoActionModel;
-    choices: ResolvedActionOptions[];
+    choices: ResolvedMonoActionOptions[];
 }
 
 interface MonoActionChoicesState {
-    selectedChoice: ResolvedActionOptions;
+    selectedChoice: number;
 }
 
 @inject(injector)
@@ -29,10 +29,16 @@ class MonoActionChoices extends React.Component<MonoActionChoicesProps> {
         };
     }
 
+    renderOptions(){
+        return this.props.choices.map( (c, k) => (
+            <MonoActionOption key={k} option={c} />
+        ))
+    }
+
     render() {
         return (
             <div className="mono-action-choices">
-                {this.props.choices.map( (c, k) => <ResolvedAction key={k} option={c} /> )}
+                {this.renderOptions()}
             </div>
         );
     }

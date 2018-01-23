@@ -3,24 +3,24 @@ import {observer, inject} from 'mobx-react';
 import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {MonoAction as MonoActionModel} from '../modules/MonoAction'
-import {ResolvedActionOptions} from '../modules/TheLostExpedition'
+import {ResolvedMonoActionOptions} from '../modules/TheLostExpedition'
 import { ResolvedAction as ResolvedActionModel } from '../modules/ResolvedAction';
 
 import Card from './Card'
 import Hero from './Hero'
 
-interface ResolvedActionProps extends DefaultProps {
-    option: ResolvedActionOptions
+interface MonoActionOptionProps extends DefaultProps {
+    option: ResolvedMonoActionOptions
 }
 
-interface ResolvedActionState {
+interface MonoActionOptionState {
 }
 
 @inject(injector)
 @observer
-class ResolvedAction extends React.Component<ResolvedActionProps> {
+class MonoActionOption extends React.Component<MonoActionOptionProps> {
     
-    constructor(props: ResolvedActionProps) {
+    constructor(props: MonoActionOptionProps) {
         super(props);
         this.state = {
         };
@@ -52,4 +52,4 @@ class ResolvedAction extends React.Component<ResolvedActionProps> {
     }
 }
 
-export default ResolvedAction;
+export default MonoActionOption;

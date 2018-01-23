@@ -3,7 +3,7 @@ import {observer, inject} from 'mobx-react';
 import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Action as ActionModel} from '../modules/Action'
-import {ResolvedActionOptions} from '../modules/TheLostExpedition'
+import {ResolvedActionOptions, ResolvedMonoActionOptions} from '../modules/TheLostExpedition'
 import {ResolvedAction} from '../modules/ResolvedAction'
 import {Game} from '../modules/Game'
 import { MonoAction as MonoActionModel } from '../modules/MonoAction';
@@ -20,7 +20,8 @@ interface SelectedActionsBoxState {
     currentActionToResolve: ActionModel,
     resolvedActions: ResolvedAction[],
     currentResolveOptions: ResolvedActionOptions[],
-    currentMonoAction: MonoActionModel
+    currentMonoAction: MonoActionModel,
+    choices: ResolvedMonoActionOptions[]
 }
 
 @inject(injector)
@@ -29,18 +30,16 @@ class SelectedActionsBox extends React.Component<SelectedActionsBoxProps, Select
     
     constructor(props: SelectedActionsBoxProps) {
         super(props);
-        // get first mono action who need player to make a choice
-        
-        
         this.state = {
             currentActionToResolve: this.props.actions[0],
             currentMonoAction: this.props.actions[0].monoActions[0],
             currentResolveOptions: [],
-            resolvedActions: []
+            resolvedActions: [],
+            choices: this.props.game.getOptionsForMonoAction(this.state.currentMonoAction)
         };
     }
 
-    renderActions(){
+    renderActionsList(){
         return this.props.actions.length > 1 && this.props.actions.map( (a, i) => {
             return (
                 <div className="actions-to-resolve-elt" key={i}>
@@ -66,7 +65,7 @@ class SelectedActionsBox extends React.Component<SelectedActionsBoxProps, Select
                 <div className='mono-action-choices'>
                     <MonoActionChoices
                         monoAction={this.state.currentMonoAction} 
-                        choices={this.props.game.getOptionsForMonoAction(this.state.currentMonoAction)}
+                        choices={this.state.choices}
                     />
                 </div>
             </div>            
@@ -78,7 +77,7 @@ class SelectedActionsBox extends React.Component<SelectedActionsBoxProps, Select
             <div className="selected-actions-box">
                 {this.props.actions.length > 1 && 'actions to resolve'}
                 <div className="actions-to-resolve">
-                    {this.renderActions()}
+                    {this.renderActionsList()}
                 </div>
                 {this.renderCurrentAction()}
             </div>

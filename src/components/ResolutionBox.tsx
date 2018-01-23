@@ -105,7 +105,7 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
         </div>
     }
 
-    renderSelectedActionOptions(): JSX.Element{
+    renderSelectedActions(): JSX.Element{
         return <SelectedActionsBox
             actions={this.state.selectedActions}
         />
@@ -126,18 +126,16 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
             } 
             else {
                 console.log('all actions selected', selectedActions)
-                let actionsWhoNeedOptions = selectedActions.filter(action => this.props.game.actionNeedOptions(action))
-                let actionsNeedOptions = actionsWhoNeedOptions.length > 0
+                let actionSelection = new ActionSelection(selectedActions)
+                let actionsCanBeAutoResolved = !this.props.game.actionSelectionCanBeAutoResolved(actionSelection)
 
                 this.setState({
                     selectingActions: false,
                     selectedActions: selectedActions
                 }, () => {
-                    if(actionsNeedOptions) {
-                        this.handleResolve()
-                    }
-                    else {
-                        actionsWhoNeedOptions.forEach(action => {})
+                    console.log('ending selection of actions', actionsCanBeAutoResolved ? 'actions don\'t need options' : 'actions need options')
+                    if(actionsCanBeAutoResolved) {
+                        this.props.game.autoResolveCard(this.props.card, actionSelection)
                     }
                 })
             }
@@ -146,8 +144,11 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
 
     renderResolveBtn(){
         return (
-            <button disabled={!this.state.selectingActions || !this.canEndSelection()} onClick={() => { this.state.selectingActions ? this.endingSelectAction() : this.handleResolve()}}>
-                {this.state.selectingActions ? 'Ending selection' : 'Resolve'}
+            <button 
+                disabled={!this.state.selectingActions || !this.canEndSelection()} 
+                onClick={this.endingSelectAction}
+            >
+                Ending selection
             </button>
         )
     }
@@ -159,7 +160,7 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
                 <div className='resolution-box-card'>
                     <Card card={this.props.card} />
                 </div>
-                {this.state.selectingActions ? this.renderActions() : this.renderSelectedActionOptions()}
+                {this.state.selectingActions ? this.renderActions() : this.renderSelectedActions()}
                 {this.renderResolveBtn()}
             </div>
         );
