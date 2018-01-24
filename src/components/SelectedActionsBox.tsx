@@ -35,7 +35,7 @@ class SelectedActionsBox extends React.Component<SelectedActionsBoxProps, Select
             currentMonoAction: this.props.actions[0].monoActions[0],
             currentResolveOptions: [],
             resolvedActions: [],
-            choices: this.props.game.getOptionsForMonoAction(this.state.currentMonoAction)
+            choices: this.props.game.getOptionsForMonoAction(this.props.actions[0].monoActions[0])
         };
     }
 

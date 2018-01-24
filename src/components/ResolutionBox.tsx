@@ -117,7 +117,7 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
         return choicesActionLength === 0 || this.state.choiceActionChoice !== null
     }
 
-    endingSelectAction() { 
+    endingSelectAction = () => { 
         console.log('ending selecting actions')
         if( this.canEndSelection()){
             let selectedActions = this.state.selectedActions.concat(this.state.optionalActionChoice, this.state.choiceActionChoice ? [this.state.choiceActionChoice] : [])

@@ -26,7 +26,7 @@ class Hand extends React.Component<HandProps> {
     }
 
     renderCards(){
-        return this.props.hand.objects.map( (c, k) => {
+        return this.props.hand.cards.map( (c, k) => {
             return <Card 
                         key={k} 
                         card={c}

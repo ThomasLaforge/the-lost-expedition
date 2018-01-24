@@ -18,7 +18,7 @@ class KeptCards extends React.Component<KeptCardsProps> {
         };
     }
 
-    get cards(){ return this.props.game.keptCards.objects }
+    get cards(){ return this.props.game.keptCards.cards }
 
     renderKeptCards(){
         return this.cards.map( (c, k) => {

@@ -292,11 +292,11 @@ export class Game {
 
     getNextCardToResolve(){
         let firstCard = this.playedCards.getFirst();
-        while(this.cardCanBeAutoResolved(firstCard)){
-            console.log('Look: autoResolve card', firstCard)
-            this.autoResolveCard(firstCard)
-            firstCard = this.playedCards.getFirst();
-        }
+        // while(this.cardCanBeAutoResolved(firstCard)){
+        //     console.log('Look: autoResolve card', firstCard)
+        //     this.autoResolveCard(firstCard)
+        //     firstCard = this.playedCards.getFirst();
+        // }
         return firstCard
     }
 
@@ -360,6 +360,7 @@ export class Game {
     }
     
     actionSelectionCanBeAutoResolved(choices: ActionSelection){
+        console.log('actionSelectionCanBeAutoResolved', choices, choices.actions.filter(a => this.actionNeedOptions(a)))
         return choices.actions.filter(a => this.actionNeedOptions(a)).length === 0
     }
     
