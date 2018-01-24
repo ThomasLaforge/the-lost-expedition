@@ -18,17 +18,19 @@ class KeptCards extends React.Component<KeptCardsProps> {
         };
     }
 
-    get cards(){ return this.props.game.keptCards.cards }
+    get cards(){ return this.props.game.keptCards.objects.map(kp => kp.card) }
 
     renderKeptCards(){
         return this.cards.map( (c, k) => {
-            return <Card key={k} card={c} />
+            return <div className="kept-card" key={k}>
+
+            </div>
         })
     }
 
     render() {
         return (
-            <div className="KeptCards">
+            <div className="kept-card-list">
                 {this.renderKeptCards()}
             </div>
         );

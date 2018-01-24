@@ -1,18 +1,18 @@
 import {observable} from 'mobx'
 
-import {Card} from './Card'
 import {Side} from './TheLostExpedition'
+import {Card} from './Card'
 
-export class Stack {
+export class Stack<T> {
 
-    @observable private _cards: Card[];
-    @observable private _maxNbcards: number;
+    @observable private _objects: T[];
+    @observable private _maxNbobjects: number;
     @observable private _lock: boolean;
 
-    constructor(cards: Card[] = [], maxNbcards?: number, lock = false){
-        this.cards = cards
-        if(maxNbcards){
-            this.maxNbcards = maxNbcards
+    constructor(objects: T[] = [], maxNbobjects?: number, lock = false){
+        this.objects = objects
+        if(maxNbobjects){
+            this.maxNbobjects = maxNbobjects
         }
         this.lock = lock
     }
@@ -29,15 +29,15 @@ export class Stack {
     }
 
     isFull(){
-        return (this.maxNbcards || this.maxNbcards === 0) && this.cards.length === this.maxNbcards
+        return (this.maxNbobjects || this.maxNbobjects === 0) && this.objects.length === this.maxNbobjects
     }
 
     get length(){
-        return this.cards.length
+        return this.objects.length
     }
 
     get(index: number){
-        return index >= 0 && index < this.cards.length && this.cards[index]
+        return index >= 0 && index < this.objects.length && this.objects[index]
     }
 
     getFirst(){
@@ -45,7 +45,7 @@ export class Stack {
     }
 
     getNextCards(){
-        return this.cards.slice(1, this.length - 1)
+        return this.objects.slice(1, this.length - 1)
     }
 
     getNextOne(){
@@ -53,70 +53,59 @@ export class Stack {
     }
 
     getLastOne(){
-        return this.get(this.cards.length - 1)
+        return this.get(this.objects.length - 1)
     }
 
-    indexOf(elt: Card){
-        return this.cards.indexOf(elt)
+    indexOf(elt: T){
+        return this.objects.indexOf(elt)
     }
 
-    switch(cards: Card[]){
-        if(cards.length === 2){
-            let indexCardOne = this.indexOf(cards[0])
-            let indexCardTwo = this.indexOf(cards[1])
-            this.cards[indexCardTwo] = cards[0]
-            this.cards[indexCardOne] = cards[1]
+    switch(objects: T[]){
+        if(objects.length === 2){
+            let indexCardOne = this.indexOf(objects[0])
+            let indexCardTwo = this.indexOf(objects[1])
+            this.objects[indexCardTwo] = objects[0]
+            this.objects[indexCardOne] = objects[1]
         }
         else {
-            throw new Error("switch cards but not exactly two cards")
+            throw new Error("switch objects but not exactly two objects")
         }
     }
 
-    remove(c: Card){
-        this.cards.splice(this.cards.indexOf(c), 1)
+    remove(c: T){
+        this.objects.splice(this.objects.indexOf(c), 1)
         if(this.length === 0){
             this.unlock()
         }
     }
 
-    add(elt: Card, side = Side.Right){
+    add(elt: T, side = Side.Right){
         if(side === Side.Right){
-            this.cards.push(elt)
+            this.objects.push(elt)
         }
         else {
-            this.cards.unshift(elt)
+            this.objects.unshift(elt)
         }
         if(this.isFull()){
             this.lockIt()
         }
     }
 
-    addAndOrder(elt: Card, order?: boolean, side = Side.Right){
-        this.add(elt, side)
-        order && this.order()
-    }
-
-    order(){
-        this.cards = this.cards.sort(function (a, b) {
-            return a.number - b.number;
-        });
-    }
-
     shuffle(){
-        this.cards = this.cards.sort(() => Math.random() - 0.5)
+        this.objects = this.objects.sort(() => Math.random() - 0.5)
     }
 
-	public get cards(): Card[] {
-		return this._cards;
+	public get objects(): T[] {
+		return this._objects;
 	}
-	public set cards(value: Card[]) {
-		this._cards = value;
+	public set objects(value: T[]) {
+		this._objects = value;
     }
-	public get maxNbcards(): number {
-		return this._maxNbcards;
+	public get maxNbobjects(): number {
+		return this._maxNbobjects;
 	}
-	public set maxNbcards(value: number) {
-		this._maxNbcards = value;
+	public set maxNbobjects(value: number) {
+		this._maxNbobjects = value;
     }
 	public get lock(): boolean {
 		return this._lock;
@@ -125,6 +114,27 @@ export class Stack {
 		this._lock = value;
 	}
     
-    
-    
 }
+
+export class CardStack extends Stack<Card> {
+
+    constructor(objects: Card[] = [], maxNbobjects?: number, lock = false){
+        super(objects, maxNbobjects, lock)
+    }
+
+    addAndOrder(elt: Card, order?: boolean, side = Side.Right){
+        this.add(elt, side)
+        order && this.order()
+    }
+    
+    order(){
+        this.objects = this.objects.sort(function (a, b) {
+            return a.number - b.number;
+        });
+    }
+
+    get cards(){
+        return this.objects
+    }
+}
+

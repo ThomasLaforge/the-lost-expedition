@@ -1,5 +1,6 @@
 import { Hero } from "./Hero";
 import { Card } from "./Card";
+import { KeptCard } from "./KeptCards";
 import { Game } from "./Game";
 
 export enum ResourceEnum {
@@ -51,7 +52,7 @@ export interface ActionJSON {
 
 export interface ResolvedMonoActionOptions {
     hero?: Hero,
-    keptCard?: Card,
+    keptCard?: KeptCard,
     cardsToSwitch?: Card[]
 }
 

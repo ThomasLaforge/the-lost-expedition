@@ -17,6 +17,7 @@ import { PlayedCards } from './PlayedCards';
 import { ActionCollection } from './ActionCollection';
 import { ResolvedActionSelection } from './ResolvedActionSelection';
 import { ResolvedMonoAction } from './ResolvedMonoAction';
+import { chmodSync } from 'fs';
 
 export class Game {
 
@@ -124,7 +125,6 @@ export class Game {
     }
 
     playerPlayCard(c: Card, side?: Side){
-        // console.log('side to play', side
         this.player.hand.remove(c)
         this.playedCards.add(c, side)
         if(this.morning){
@@ -133,11 +133,14 @@ export class Game {
         if(this.morning && this.playedCards.length === 4){
             this.drawCardsForPlayedCards()
         }
+
     }
 
     resolveCard(c:Card, choices: ResolvedActionSelection){
         // Check if cards is the first card not played
-        if(this.playedCards.indexOf(c) === 0){
+        let cardIndex = this.playedCards.cards.indexOf(c)
+        console.log('card index', cardIndex, c.name, this.playedCards.cards.map(c => c.name))
+        if(cardIndex === 0){
             // Check if all forced choices are done
             if(choices){
                 // resolve all action
@@ -169,7 +172,7 @@ export class Game {
         let toKeep = false;
         action.monoActions.forEach( (resolvedMonoAction, i) => {
             let options = resolvedMonoAction.options
-            console.log('mono action to resolve', options)
+            // console.log('mono action to resolve', options)
             switch (resolvedMonoAction.resource) {
                 case ResourceEnum.Bullet:
                     if(resolvedMonoAction.drop){
@@ -301,7 +304,7 @@ export class Game {
     }
 
     getOptionsForMonoAction(monoAction: MonoAction){
-        console.log('monoAction get options', monoAction)
+        // console.log('monoAction get options', monoAction.resource, monoAction.drop)
         let options: ResolvedMonoActionOptions[] = [];
         switch(monoAction.resource) {
             case ResourceEnum.PV:

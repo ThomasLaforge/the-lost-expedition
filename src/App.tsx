@@ -13,18 +13,18 @@ import { Store } from './modules/Store'
 import './styles/App.scss';
 
 @observer
-class App extends React.Component<{}, { game: GameModel} > {
+class App extends React.Component<{}, { store: Store} > {
 
   constructor(props: any){
     super(props);
     this.state = {
-      game : new GameModel()
+      store : new Store()
     }
   }
 
   render() {
     return (
-      <Provider store={new Store()} >
+      <Provider store={this.state.store} >
         <div className="App">
           <Game />
           {/* <Logger logger={this.state.game.logger} /> */}

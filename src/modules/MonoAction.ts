@@ -7,7 +7,7 @@ export class MonoAction {
     @observable private _resource: ResourceEnum; 
     @observable private _drop: boolean;
 
-	constructor(resource: ResourceEnum, drop: boolean) {
+	constructor(resource: ResourceEnum, drop?: boolean) {
         this.resource = resource
         this.drop = drop
 	}
@@ -15,7 +15,7 @@ export class MonoAction {
 	getDefinition(){
 		let str = ''
 		if(this.drop){
-			str = 'drop';
+			str = 'drop ';
 		}
 		else {
 			let resourcesWhoDoesntCareAboutDropOption = [
@@ -26,10 +26,10 @@ export class MonoAction {
 				ResourceEnum.Switch
 			] 
 			if(resourcesWhoDoesntCareAboutDropOption.indexOf(this.resource) === -1){
-				str = 'get'
+				str = 'get  '
 			}
 		}
-		str += ' ' + EnumStringifier.getRecourceName(this.resource)
+		str += EnumStringifier.getRecourceName(this.resource)
 		return str
 	}
 

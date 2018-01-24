@@ -1,20 +1,44 @@
 import {Stack} from './Stack'
 import {Card} from './Card'
 import { ResourceEnum } from './TheLostExpedition';
+import { observable } from 'mobx/lib/api/observable';
 
-export class KeptCards extends Stack {
+export class KeptCard {
 
-    constructor(objects: Card[] = []){
-        super(objects)
+    @observable private _card: Card;
+    @observable private _resources: ResourceEnum[];
+
+    constructor(card: Card, resources: ResourceEnum[]){
+        this.card = card
+        this.resources = resources
+    }
+
+	public get resources(): ResourceEnum[] {
+		return this._resources;
+	}
+	public set resources(value: ResourceEnum[]) {
+		this._resources = value;
+	}
+	public get card(): Card {
+		return this._card;
+	}
+	public set card(value: Card) {
+		this._card = value;
+	}
+    
+}
+
+
+export class KeptCards extends Stack<KeptCard> {
+
+    constructor(objects: KeptCard[] = []){
+        super(objects as KeptCard[])
     }
 
     getCardsWithResourceAccessible(resource: ResourceEnum){
-        return this.cards.filter(c => {
-            let actionsWithResource = c.actionCollection.actions.filter( a => {
-                let monoActions = a.monoActions
-                return monoActions.filter(monoAction => {
-                    return monoAction.drop = false && monoAction.resource === resource
-                }).length > 0
+        return this.objects.filter(kp => {
+            let actionsWithResource = kp.resources.filter( r => {
+                return r === resource
             })
 
             return actionsWithResource.length > 0
