@@ -1,7 +1,7 @@
 import {observable} from 'mobx'
 
 import { Action } from './Action'
-import { ActionType } from './TheLostExpedition'
+import { ActionType, ResourceEnum } from './TheLostExpedition'
 
 export class ActionCollection {
 
@@ -21,6 +21,16 @@ export class ActionCollection {
 
 	getMustDoActions(){
 		return this.actions.filter(a => a.type === ActionType.MustDo)
+	}
+
+	getActionsWithExpertiseGain(){
+		return this.actions.filter(a => {
+			return a.monoActions.filter(mono => {
+				let r = mono.resource
+				let isExpertise = r === ResourceEnum.Camp || r === ResourceEnum.Compass || r === ResourceEnum.Leaf
+				return !mono.drop && isExpertise 
+			}).length > 0
+		})
 	}
 
     // Getters / Setters

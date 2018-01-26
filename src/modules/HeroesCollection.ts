@@ -1,21 +1,22 @@
 import {observable} from 'mobx'
 
 import { Hero } from './Hero'
+import { Stock } from './Stock'
 import { Resource } from './Resource'
-import { HeroJSON, ResourceEnum } from './TheLostExpedition'
+import { HeroJSON, ResourceEnum, Difficulty } from './TheLostExpedition'
 const json_heroes = require('../datas/heroes.json')
 
 export class HeroesCollection {
 
     @observable private _heroes: Hero[];
 
-	constructor(heroes?: Hero[]) {
+	constructor(difficulty: Difficulty,heroes?: Hero[]) {
         if(heroes){
             this.heroes = heroes
         }
         else {
             // import from json
-            this.loadHeroes()
+            this.loadHeroes(difficulty)
         }
     }
 
@@ -23,11 +24,11 @@ export class HeroesCollection {
         return this.heroes.indexOf(h)
     }
 
-    loadHeroes(){
+    loadHeroes(difficulty: Difficulty){
         let heroes: Hero[] = []
         json_heroes.forEach( (hero: HeroJSON, i: number) => {
             if(hero.hasOwnProperty('name') && hero.hasOwnProperty('resource')){
-                heroes.push( new Hero(i + 1, hero.name, new Resource(hero.resource)) );
+                heroes.push( new Hero(i + 1, hero.name, new Resource(hero.resource), new Stock(difficulty === Difficulty.Hard ? 3 : 4, 4)) );
             }
             else {
                 console.log('hero not valid', hero)
@@ -38,8 +39,8 @@ export class HeroesCollection {
         this.shuffle()
     }
 
-    resetHeroes(){
-        this.loadHeroes()
+    resetHeroes(difficulty: Difficulty){
+        this.loadHeroes(difficulty)
     }
     
     getSomeHeroes(nb = 1){

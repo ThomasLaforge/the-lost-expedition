@@ -5,9 +5,9 @@ import {Card} from './Card';
 import {Player} from './Player';
 import {Deck} from './Deck';
 import {Stack} from './Stack';
-import {KeptCards} from './KeptCards';
+import {KeptCards, KeptCard} from './KeptCards';
 import {HeroesCollection} from './HeroesCollection';
-import {Side, ResourceEnum, ResolvedActionOptions, ResolvedMonoActionOptions} from './TheLostExpedition'
+import {Difficulty, Side, ResourceEnum, ResolvedActionOptions, ResolvedMonoActionOptions} from './TheLostExpedition'
 import { ActionSelection } from './ActionSelection';
 import { ResolvedAction } from './ResolvedAction';
 import { MonoAction } from './MonoAction';
@@ -31,11 +31,16 @@ export class Game {
     @observable private _cardToPlace: Card;
     @observable private _historyMonoAction: MonoAction[];
     @observable private _logger: Logger;
+    @observable private _difficulty: Difficulty;
 
-    constructor(player?: Player, morning = true, road = new Road(), deck = new Deck(), playedCards = new PlayedCards(6), heroesCollection = new HeroesCollection(), nbHeroes = 3, keptCards = new KeptCards(), cardToPlace: Card = null, logger = new Logger(), autoStart = true ){
+    constructor(difficulty = Difficulty.Hard, player?: Player, morning = true, road = new Road(difficulty), deck = new Deck(), playedCards = new PlayedCards(6), heroesCollection = new HeroesCollection(difficulty), nbHeroes = 3, keptCards = new KeptCards(), cardToPlace: Card = null, logger = new Logger(), autoStart = true ){
+        // Facile : utilisez sept cartes d'expédition. Placez quatre jetons de santé sur chaque explorateur.
+        // Normal : utilisez neuf cartes d'expédition. Placez quatre jetons de santé sur chaque explorateur.
+        // Difficile : utilisez neuf cartes d'expédition. Placez trois jetons de santé sur chaque explorateur et prenez un jeton de nourriture supplémentaire. 
+        this.difficulty = difficulty
         this.heroesCollection = heroesCollection
-        let playerHeroesCollection = new HeroesCollection(this.heroesCollection.getHeroesWithDistinctsResources())
-        this.player = player || new Player(playerHeroesCollection)
+        let playerHeroesCollection = new HeroesCollection(difficulty, this.heroesCollection.getHeroesWithDistinctsResources())
+        this.player = player || new Player(difficulty, playerHeroesCollection)
         this.morning = morning
         this.road = road
         this.deck = deck
@@ -147,7 +152,7 @@ export class Game {
                 let toKeep = choices.actions.filter(action => this.resolveAction(c, action)).length > 0
                 // Mark card as completed -> go to next card
                 if(toKeep){
-                    this.keptCards.add(c)
+                    this.keptCards.add(new KeptCard(c))
                 }
                 this.playedCards.remove(c)
                 if(!this.playedCards.isLock()){
@@ -442,7 +447,12 @@ export class Game {
     }
 	public set logger(value: Logger) {
 		this._logger = value;
+    }
+	public get difficulty(): Difficulty {
+		return this._difficulty;
 	}
-    
+	public set difficulty(value: Difficulty) {
+		this._difficulty = value;
+	}
         
 }

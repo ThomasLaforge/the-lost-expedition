@@ -1,12 +1,15 @@
 import {observable} from 'mobx'
+
+import {Difficulty} from './TheLostExpedition'
+
 export class Road {
 
     @observable private _length: number;
     @observable private _position: number;
 
-    constructor(length = 9, position = 0){
+    constructor(difficulty: Difficulty, position = 0){
         this.position = position
-        this.length = length
+        this.length = difficulty === Difficulty.Easy ? 7 : 9
     }
 
     progress(){
