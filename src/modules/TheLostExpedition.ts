@@ -3,6 +3,14 @@ import { Card } from "./Card";
 import { KeptCard } from "./KeptCards";
 import { Game } from "./Game";
 
+export enum Difficulty {
+    Easy,
+    Normal,
+    Hard
+}
+
+export const DEFAULT_LVL = Difficulty.Hard
+
 export enum ResourceEnum {
     Bullet = 0,
     Food = 1,

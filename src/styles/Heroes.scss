@@ -5,44 +5,44 @@ $nbHeroes : 6;
 .heroes {
     display: flex;
     flex-direction: row;
+}
 
-    .hero {
-        height: 100%;
-        width: 1 / $nbHeroesInGame * 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        
-        @for $i from 1 through $nbHeroes {
-            .hero-#{$i} {
-                height: 100%;
-                background-size: contain;
-                background-position:center center;
-                background-repeat:no-repeat;
-                filter:contrast(130%);
-            }
-            .hero-#{$i}.hero-alive {
-                background-image: url('../assets/img/heroes/alive/' + $i + '.png');
-            }
-            .hero-#{$i}.hero-dead {
-                background-image: url('../assets/img/heroes/dead/' + $i + '.png');                
-            }
+.hero {
+    height: 100%;
+    width: 1 / $nbHeroesInGame * 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    @for $i from 1 through $nbHeroes {
+        .hero-#{$i} {
+            height: 100%;
+            background-size: contain;
+            background-position:center center;
+            background-repeat:no-repeat;
+            filter:contrast(130%);
         }
+        .hero-#{$i}.hero-alive {
+            background-image: url('../assets/img/heroes/alive/' + $i + '.png');
+        }
+        .hero-#{$i}.hero-dead {
+            background-image: url('../assets/img/heroes/dead/' + $i + '.png');                
+        }
+    }
 
-        .hero-health{
-            height: 40px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-        
-            .hero-health-pv {
-                height: 100%;
-                width: 40px;
-                background-image: url('../assets/img/tokens/PV.png');
-                background-size: contain;
-                background-position:center center;
-                background-repeat:no-repeat;
-            }
+    .hero-health{
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    
+        .hero-health-pv {
+            height: 100%;
+            width: 40px;
+            background-image: url('../assets/img/tokens/PV.png');
+            background-size: contain;
+            background-position:center center;
+            background-repeat:no-repeat;
         }
     }
 }

@@ -8,7 +8,7 @@ export class Stock {
     @observable private _maxStockSize: number;
     @observable private _minStockSize: number;
 
-    constructor(minStockSize = -1, maxStockSize = MAX_STOCK_SIZE, initialStockSize = 3){
+    constructor(initialStockSize = 3, minStockSize = -1, maxStockSize = MAX_STOCK_SIZE){
         this.stockSize = initialStockSize
         this.maxStockSize = maxStockSize
         this.minStockSize = minStockSize

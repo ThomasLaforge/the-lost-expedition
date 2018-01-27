@@ -6,18 +6,14 @@ import { observable } from 'mobx';
 export class KeptCard {
 
     @observable private _card: Card;
-    @observable private _resources: ResourceEnum[];
 
-    constructor(card: Card, resources: ResourceEnum[]){
+    constructor(card: Card){
         this.card = card
-        this.resources = resources
     }
 
 	public get resources(): ResourceEnum[] {
-		return this._resources;
-	}
-	public set resources(value: ResourceEnum[]) {
-		this._resources = value;
+        let actionsWithResourcesGain = this.card.actionCollection.getActionsWithExpertiseGain()
+		return [].concat.apply(actionsWithResourcesGain.map(a => a.monoActions.map(mono => mono.resource)))
 	}
 	public get card(): Card {
 		return this._card;

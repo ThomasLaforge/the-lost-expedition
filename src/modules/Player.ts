@@ -4,6 +4,7 @@ import { Stock } from './Stock'
 import { Card } from './Card'
 import { Hand } from './Hand'
 import { HeroesCollection } from './HeroesCollection'
+import { Difficulty, DEFAULT_LVL } from './TheLostExpedition'
 
 export class Player {
 
@@ -13,7 +14,7 @@ export class Player {
     @observable private _heroesCollection: HeroesCollection;
     @observable private _hand: Hand;
 
-    constructor(heroes = new HeroesCollection([]), foodStock = new Stock(), bulletStock = new Stock(0), name = 'anonymous', hand = new Hand() ){
+    constructor(difficulty: Difficulty = DEFAULT_LVL, heroes = new HeroesCollection(difficulty), foodStock = new Stock(difficulty === Difficulty.Hard ? 4 : 3), bulletStock = new Stock(undefined, 0), name = 'anonymous', hand = new Hand() ){
         this._foodStock = foodStock
         this._bulletStock = bulletStock
         this._name = name

@@ -22,6 +22,8 @@ class CardCollection extends React.Component<CardCollectionProps, CardCollection
         super(props);
         this.state = {
             cards: new Deck(null, false).cards,
+            // only cards with expertise gain action
+            // cards: new Deck(null, false).cards.filter(c => c.actionCollection.getActionsWithExpertiseGain().length > 0),
             showCollection: !!this.props.showCollection
         };
     }
