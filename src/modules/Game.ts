@@ -5,7 +5,7 @@ import {Card} from './Card';
 import {Player} from './Player';
 import {Deck} from './Deck';
 import {Stack} from './Stack';
-import {KeptCards} from './KeptCards';
+import {KeptCard,  KeptCards} from './KeptCards';
 import {HeroesCollection} from './HeroesCollection';
 import {Side, ResourceEnum, ResolvedActionOptions, ResolvedMonoActionOptions} from './TheLostExpedition'
 import { ActionSelection } from './ActionSelection';
@@ -147,7 +147,9 @@ export class Game {
                 let toKeep = choices.actions.filter(action => this.resolveAction(c, action)).length > 0
                 // Mark card as completed -> go to next card
                 if(toKeep){
-                    this.keptCards.add(c)
+                    // let monoActionsWithResourceToKeep = choices.actions.filter(a => a.monoActions.filter(mono => !!mono.resource && !mono.drop))
+                    // let keptCard = new KeptCard(c, monoActionsWithResourceToKeep.map(a => ))
+                    // this.keptCards.add(keptCard)
                 }
                 this.playedCards.remove(c)
                 if(!this.playedCards.isLock()){

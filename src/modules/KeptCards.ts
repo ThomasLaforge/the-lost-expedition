@@ -1,7 +1,7 @@
 import {Stack} from './Stack'
 import {Card} from './Card'
 import { ResourceEnum } from './TheLostExpedition';
-import { observable } from 'mobx/lib/api/observable';
+import { observable } from 'mobx';
 
 export class KeptCard {
 

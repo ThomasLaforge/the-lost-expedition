@@ -48,7 +48,7 @@ class MonoActionOption extends React.Component<MonoActionOptionProps> {
                 }
                 { this.props.option.keptCard && 
                     <div className='choice-hero'>
-                        <Card card={this.props.option.keptCard} /> 
+                        <Card card={this.props.option.keptCard.card} /> 
                     </div>
                 }
 
