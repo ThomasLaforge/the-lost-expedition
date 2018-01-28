@@ -1,3 +1,4 @@
+import {ResolvedActionSelection} from '../modules/ResolvedActionSelection';
 import * as React from 'react';
 import {observer, inject} from 'mobx-react';
 import { DefaultProps, injector } from '../lib/mobxInjector'
@@ -123,21 +124,22 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
             let selectedActions = this.state.selectedActions.concat(this.state.optionalActionChoice, this.state.choiceActionChoice ? [this.state.choiceActionChoice] : [])
             if(selectedActions.length === 0){
                 console.log('resolve an empty card')
+                this.props.game.resolveCard(this.props.card, new ResolvedActionSelection([]))
             } 
             else {
                 console.log('all actions selected', selectedActions)
                 let actionSelection = new ActionSelection(selectedActions)
                 let actionsCanBeAutoResolved = this.props.game.actionSelectionCanBeAutoResolved(actionSelection)
 
+                // console.log('ending selection of actions', actionsCanBeAutoResolved ? 'actions don\'t need options' : 'actions need options')
+                console.log('autoResolved after action selection', this.props.card.name)
+                if(actionsCanBeAutoResolved) {
+                    this.props.game.autoResolveCard(this.props.card, actionSelection)
+                }
+
                 this.setState({
-                    selectingActions: false,
+                    selectingActions: actionsCanBeAutoResolved,
                     selectedActions: selectedActions
-                }, () => {
-                    // console.log('ending selection of actions', actionsCanBeAutoResolved ? 'actions don\'t need options' : 'actions need options')
-                    console.log('autoResolved after action selection', this.props.card.name)
-                    if(actionsCanBeAutoResolved) {
-                        this.props.game.autoResolveCard(this.props.card, actionSelection)
-                    }
                 })
             }
         }
