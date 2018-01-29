@@ -1,32 +1,19 @@
 import { Player } from '../modules/Player'
+import { Difficulty } from '../modules/TheLostExpedition'
 
-let autoPlayer = new Player()
-describe('player atributes', () => {
-  describe('food stock', () => {
-    test('food stock initial', () => {
-      expect(autoPlayer.foodStock.stockSize).toEqual(3);
+let player = new Player()
+
+describe('Player', () => {
+  describe('food stock', () => {      
+    test('win food', () => {
+      player.foodStock.stockSize = 2    
+      player.getFood()
+      expect(player.foodStock.stockSize).toEqual(3);
     })
-    test('eat', () => {      
-      autoPlayer.eat();
-      expect(autoPlayer.foodStock.stockSize).toEqual(2);
-    })
-    test('get food', () => {      
-      autoPlayer.getFood();
-      expect(autoPlayer.foodStock.stockSize).toEqual(3);
-    })
-  })
-  
-  describe('bullet stock', () => {
-    test('initial stock', () => {
-      expect(autoPlayer.bulletStock.stockSize).toEqual(3);
-    })
-    test('shot', () => {
-      autoPlayer.shot();
-      expect(autoPlayer.bulletStock.stockSize).toEqual(2);
-    })
-    test('get a bullet', () => {      
-      autoPlayer.getBullet();
-      expect(autoPlayer.bulletStock.stockSize).toEqual(3);
+    test('eat food', () => {
+      player.foodStock.stockSize = 2    
+      player.eat()
+      expect(player.foodStock.stockSize).toEqual(1);
     })
   })
-});
+})

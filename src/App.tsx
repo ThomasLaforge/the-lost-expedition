@@ -8,8 +8,6 @@ import CardCollection from './components/CardCollection';
 import Logger from './components/Logger';
 import { Game as GameModel } from './modules/Game'
 import { Store } from './modules/Store'
-// import { ActionSelection as ActionSelectionModel } from './modules/ActionSelection'
-// import { SelectedAction as SelectedActionModel } from './modules/SelectedAction'
 import './styles/App.scss';
 
 @observer
