@@ -316,21 +316,20 @@ export class Game {
             case ResourceEnum.Life:
                 // check if drop then alive else win then not full life
                 if(monoAction.drop){
-                    options = this.player.heroesCollection.getHeroesAlive().map( hero => { return { hero } })
+                    options = this.player.heroesCollection.getHeroesAlive().map(hero => ({ hero }))
                 }
                 else {
-                    options = this.player.heroesCollection.getHeroesNotFullLife().map(hero => { return {hero} })
+                    options = this.player.heroesCollection.getHeroesNotFullLife().map(hero => ({ hero }))
                 }
                 break;
             case ResourceEnum.Leaf:
             case ResourceEnum.Camp:
             case ResourceEnum.Compass:
                 if(monoAction.drop){
-                    let hero = this.player.heroesCollection.getHeroByResource(monoAction.resource)
-                    if( hero && hero.isAlive() ) {
-                        options = [{ hero }]
-                    }
-                    let keptCards = this.keptCards.getCardsWithResourceAccessible(monoAction.resource).map(keptCard => { return { keptCard } })
+                    let alivedHeroes = this.player.heroesCollection.getHeroesAlive()
+                    let heroArray = alivedHeroes.map(hero => ({hero}))
+                    options = options.concat()
+                    let keptCards = this.keptCards.getCardsWithResourceAccessible(monoAction.resource).map(keptCard => ({ keptCard }))
                     options = options.concat(keptCards)
                 }
                 break;
