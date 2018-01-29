@@ -18,19 +18,19 @@ class App extends React.Component<{}, { store: Store} > {
   constructor(props: any){
     super(props);
     this.state = {
-      store : new Store()
+      store: new Store()
     }
   }
 
   render() {
     return (
       <Provider store={this.state.store} >
-        <div className="App">
-          <Game />
-          {/* <Logger logger={this.state.game.logger} /> */}
-          <CardCollection />
-          {/* <DevTools /> */}
-        </div>
+          <div className="App">
+            <Game />
+            {/* <Logger logger={this.state.game.logger} /> */}
+            <CardCollection />
+            {/* <DevTools /> */}
+          </div>
       </Provider>
     );
   }
