@@ -25,7 +25,7 @@ class App extends React.Component<{}, { store: Store} > {
       <Provider store={this.state.store} >
           <div className="App">
             <Game />
-            {/* <Logger logger={this.state.game.logger} /> */}
+            <Logger logger={this.state.store.gameStore.UI_Logger} />
             <CardCollection />
             {/* <DevTools /> */}
           </div>

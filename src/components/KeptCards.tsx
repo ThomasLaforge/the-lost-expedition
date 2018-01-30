@@ -23,7 +23,7 @@ class KeptCards extends React.Component<KeptCardsProps> {
     renderKeptCards(){
         return this.cards.map( (c, k) => {
             return <div className="kept-card" key={k}>
-
+                <Card card={c} />
             </div>
         })
     }

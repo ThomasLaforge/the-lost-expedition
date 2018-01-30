@@ -18,11 +18,10 @@ class Log extends React.Component<LogProps> {
     }
 
     render() {
-        let logContent = 'something happened'
 
         return (
             <div className='log'>
-                {this.props.log.timestamp} - {logContent}
+                {this.props.log.timestamp} - {this.props.log.action}
             </div>
         );
     }

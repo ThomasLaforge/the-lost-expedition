@@ -30,13 +30,10 @@ export class Game {
     @observable private _heroesCollection: HeroesCollection;
     @observable private _cardToPlace: Card;
     @observable private _historyMonoAction: MonoAction[];
-    @observable private _logger: Logger;
+    @observable private _UI_Logger: Logger;
     @observable private _difficulty: Difficulty;
 
-    constructor(difficulty = Difficulty.Hard, player?: Player, morning = true, road = new Road(difficulty), deck = new Deck(), playedCards = new PlayedCards(6), heroesCollection = new HeroesCollection(difficulty), nbHeroes = 3, keptCards = new KeptCards(), cardToPlace: Card = null, logger = new Logger(), autoStart = true ){
-        // Facile : utilisez sept cartes d'expédition. Placez quatre jetons de santé sur chaque explorateur.
-        // Normal : utilisez neuf cartes d'expédition. Placez quatre jetons de santé sur chaque explorateur.
-        // Difficile : utilisez neuf cartes d'expédition. Placez trois jetons de santé sur chaque explorateur et prenez un jeton de nourriture supplémentaire. 
+    constructor(difficulty = Difficulty.Hard, player?: Player, morning = true, road = new Road(difficulty), deck = new Deck(), playedCards = new PlayedCards(6), heroesCollection = new HeroesCollection(difficulty), nbHeroes = 3, keptCards = new KeptCards(), cardToPlace: Card = null, UI_Logger = new Logger(), autoStart = true ){
         this.difficulty = difficulty
         this.heroesCollection = heroesCollection
         let playerHeroesCollection = new HeroesCollection(difficulty, this.heroesCollection.getHeroesWithDistinctsResources())
@@ -47,7 +44,7 @@ export class Game {
         this.cardToPlace = cardToPlace
         this.playedCards = playedCards
         this.keptCards = keptCards
-        this.logger = logger
+        this.UI_Logger = UI_Logger
         autoStart && this.startTurn()
     }
 
@@ -82,6 +79,7 @@ export class Game {
  * Actions
  */
     startTurn(){
+        this.UI_Logger.push({ action: 'startTurn' })
         this.drawCardsForPlayerHand(6)
         this.drawCardsForPlayedCards(2)
         if(this.morning){
@@ -90,6 +88,7 @@ export class Game {
     }
 
     switchMorning(){
+        this.UI_Logger.push({ action: 'switchMorning' })        
         if( this.player.nourrish() ){
             this.morning = !this.morning
         }
@@ -99,6 +98,7 @@ export class Game {
     }
 
     progress(){
+        this.UI_Logger.push({ action: 'roadProgress' })        
         this.road.progress()
     }
 
@@ -441,11 +441,11 @@ export class Game {
 	public set historyMonoAction(value: MonoAction[]) {
 		this._historyMonoAction = value;
 	}
-	public get logger(): Logger {
-		return this._logger;
+	public get UI_Logger(): Logger {
+		return this._UI_Logger;
     }
-	public set logger(value: Logger) {
-		this._logger = value;
+	public set UI_Logger(value: Logger) {
+		this._UI_Logger = value;
     }
 	public get difficulty(): Difficulty {
 		return this._difficulty;

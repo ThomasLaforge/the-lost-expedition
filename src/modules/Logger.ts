@@ -1,9 +1,13 @@
 import {observable} from 'mobx'
+import { objectAssign } from 'mobx/lib/utils/utils';
 
-export interface Log {
-    timestamp: number,
+interface LogWithoutTimestamp {
     action: string,
-    objects: string
+    objects?: string
+}
+
+export interface Log extends LogWithoutTimestamp {
+    timestamp: number
 }
 
 export class Logger {
@@ -14,8 +18,8 @@ export class Logger {
         this.logs = logs
     }
 
-    push(l: Log){
-        this.logs.push(l)
+    push(log: LogWithoutTimestamp){
+        this.logs.push(Object.assign({timestamp: Date.now()}, log))
     }
 
 	public get logs(): Log[] {
