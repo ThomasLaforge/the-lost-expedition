@@ -99,7 +99,6 @@ export class Game {
         }
         else {
             throw new Error('trying to switch turn without unlock the played cards');
-            
         }
     }
 

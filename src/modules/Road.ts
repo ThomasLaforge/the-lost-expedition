@@ -13,11 +13,11 @@ export class Road {
     }
 
     progress(){
-        let canProgress = this.position < this.length - 1
-        if(canProgress){
+        let hasProgressed = this.position < this.length - 1
+        if(hasProgressed){
             this.position++
         }
-        return canProgress
+        return hasProgressed
     }
 
     isComplete(){

@@ -1,8 +1,29 @@
 import { Game } from '../modules/Game'
 
 describe('Game States', () => {
+    describe('Road', () => {    
+        let game = new Game()
+        let initialPosition = game.road.position
 
-    describe('switch morning', () => {    
+        test('progress', () => {
+            game.progress();
+            expect(game.road.position).toEqual(initialPosition + 1);
+        })
+        test('dont progress', () => {
+            game.road.position = game.road.length - 1;
+            expect(game.road.progress()).toEqual(false);
+        })
+        test('is complete', () => {
+            game.road.position = game.road.length - 1;
+            expect(game.road.isComplete()).toEqual(true);
+        })
+        test('not complete', () => {
+            game.road.position = 2;
+            expect(game.road.isComplete()).toEqual(false);
+        })
+    })
+
+    describe('Switch morning', () => {    
         describe('Morning to evening', () => {    
             let game = new Game()
             let initialfoodStockSize = game.player.foodStock.stockSize
