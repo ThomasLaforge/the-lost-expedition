@@ -43,7 +43,7 @@ class Logger extends React.Component<LoggerProps> {
 
     renderLogs(){
         return this.props.logger.logs.map( (l, i: number ) => {
-            return <Log log={l} />
+            return <Log log={l} key={i} />
         })
     }
 
