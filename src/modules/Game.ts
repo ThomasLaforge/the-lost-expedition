@@ -88,12 +88,18 @@ export class Game {
     }
 
     switchMorning(){
-        this.UI_Logger.push({ action: 'switchMorning' })        
-        if( this.player.nourrish() ){
-            this.morning = !this.morning
+        this.UI_Logger.push({ action: 'switchMorning' })
+        if(!this.playedCards.isLocked()){
+            if( this.player.nourrish() ){
+                this.morning = !this.morning
+            }
+            if( this.morning ){
+                this.startTurn()
+            }
         }
-        if( this.morning ){
-            this.startTurn()
+        else {
+            throw new Error('trying to switch turn without unlock the played cards');
+            
         }
     }
 
@@ -155,7 +161,7 @@ export class Game {
                     this.keptCards.add(new KeptCard(c))
                 }
                 this.playedCards.remove(c)
-                if(!this.playedCards.isLock()){
+                if(!this.playedCards.isLocked()){
                     this.switchMorning()
                 }
             }

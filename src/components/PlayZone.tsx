@@ -44,9 +44,9 @@ class PlayZone extends React.Component<PlayZoneProps, PlayZoneState> {
                 <div className="play-zone-cards-played">
                     {this.renderCards()}
                 </div>
-                { game.playedCards.isLock() && !!cardToResolve && <ResolutionBox card={cardToResolve} /> }
-                { !game.playedCards.isLock() && game.morning && <MorningCardSelection /> }
-                { !game.playedCards.isLock() && !game.morning && <EveningCardSelection /> }
+                { game.playedCards.isLocked() && !!cardToResolve && <ResolutionBox card={cardToResolve} /> }
+                { !game.playedCards.isLocked() && game.morning && <MorningCardSelection /> }
+                { !game.playedCards.isLocked() && !game.morning && <EveningCardSelection /> }
             </div>
         );
     }

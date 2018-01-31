@@ -7,25 +7,25 @@ export class Stack<T> {
 
     @observable private _objects: T[];
     @observable private _maxNbobjects: number;
-    @observable private _lock: boolean;
+    @observable private _locked: boolean;
 
-    constructor(objects: T[] = [], maxNbobjects?: number, lock = false){
+    constructor(objects: T[] = [], maxNbobjects?: number, locked = false){
         this.objects = objects
         if(maxNbobjects){
             this.maxNbobjects = maxNbobjects
         }
-        this.lock = lock
+        this.locked = locked
     }
 
-    isLock(){
-        return this.lock;
+    isLocked(){
+        return this.locked;
     }
 
     lockIt(){
-        this.lock = true
+        this.locked = true
     }
     unlock(){
-        this.lock = false
+        this.locked = false
     }
 
     isFull(){
@@ -107,19 +107,19 @@ export class Stack<T> {
 	public set maxNbobjects(value: number) {
 		this._maxNbobjects = value;
     }
-	public get lock(): boolean {
-		return this._lock;
+	public get locked(): boolean {
+		return this._locked;
 	}
-	public set lock(value: boolean) {
-		this._lock = value;
+	public set locked(value: boolean) {
+		this._locked = value;
 	}
     
 }
 
 export class CardStack extends Stack<Card> {
 
-    constructor(objects: Card[] = [], maxNbobjects?: number, lock = false){
-        super(objects, maxNbobjects, lock)
+    constructor(objects: Card[] = [], maxNbobjects?: number, locked = false){
+        super(objects, maxNbobjects, locked)
     }
 
     addAndOrder(elt: Card, order?: boolean, side = Side.Right){
