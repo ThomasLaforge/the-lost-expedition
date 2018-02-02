@@ -60,6 +60,9 @@ $roadHeight : 150px;
             display: flex;
             flex-direction: row;
             
+            .kept-card {
+                width: 100%;
+            }
         }
     }
 

@@ -295,6 +295,7 @@ export class Game {
         actionSelection = actionSelection || card.getAutoActionSelectionFromCard()
         let resolvedActions: ResolvedAction[] = actionSelection.actions.map(a => {
             let resolvedMonoActions = a.monoActions.map(monoAction => {
+                console.log('this.getOptionsForMonoAction(monoAction)', this.getOptionsForMonoAction(monoAction))
                 let option: ResolvedMonoActionOptions = this.getOptionsForMonoAction(monoAction)[0]
                 return new ResolvedMonoAction(monoAction.resource, monoAction.drop, option)
             })

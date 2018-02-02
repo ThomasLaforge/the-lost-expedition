@@ -132,7 +132,7 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
                 let actionsCanBeAutoResolved = this.props.game.actionSelectionCanBeAutoResolved(actionSelection)
 
                 // console.log('ending selection of actions', actionsCanBeAutoResolved ? 'actions don\'t need options' : 'actions need options')
-                console.log('autoResolved after action selection', this.props.card.name)
+                console.log('autoResolved after action selection', this.props.card.name, actionsCanBeAutoResolved)
                 if(actionsCanBeAutoResolved) {
                     this.props.game.autoResolveCard(this.props.card, actionSelection)
                 }
