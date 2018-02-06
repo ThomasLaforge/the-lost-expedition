@@ -22,7 +22,7 @@ class FoodStock extends React.Component<StockProps> {
     renderFood(){
         let food = []
         for (let i = 0; i < this.stock.stockSize; i++) {
-            food.push(<div className='food-stock-elt' key={i} />)            
+            food.push(<div className='food-stock-elt' key={i}>Food</div>)            
         }
         return food
     }
