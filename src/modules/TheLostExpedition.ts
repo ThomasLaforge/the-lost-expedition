@@ -93,7 +93,7 @@ export class EnumStringifier {
             case ResourceEnum.PV:
                 return 'pv'
             case ResourceEnum.Life:
-                return 'life' 
+                return 'death' 
             case ResourceEnum.Run:
                 return 'run'
             case ResourceEnum.Leaf:
