@@ -102,6 +102,7 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
                     {this.renderOptionalActions()}
                 </div>
             }
+            {this.renderResolveBtn()}            
         </div>
     }
 
@@ -163,7 +164,6 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
                     <Card card={this.props.card} />
                 </div>
                 {this.state.selectingActions ? this.renderActions() : this.renderSelectedActions()}
-                {this.renderResolveBtn()}
             </div>
         );
     }
