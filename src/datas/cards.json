@@ -78,7 +78,7 @@
                 "mono_actions": [
                     {
                         "drop": false,
-                        "resource": 10
+                        "resource": 3
                     }
                 ]
             }
