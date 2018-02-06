@@ -84,9 +84,38 @@ $roadHeight : 150px;
     }
 
     .resolution-box {
-        .resolution-box-card{
+        .resolution-box-card {
             width:100%;
             height: 200px;
+        }
+
+        .mono-action-choices {
+            width: 100%;
+            
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            
+            .resolved-actions-choice {
+                width: 1/3 * 100%;
+                height: 200px;
+                display: flex;
+                flex-direction: row;
+                
+                .choice-cards-to-switch, 
+                .choice-hero, 
+                .choice-expertise {
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+            }
+        }
+            
+        .resolved-actions-choice-selected {
+            border: 1px solid green;   
         }
     }
 }
