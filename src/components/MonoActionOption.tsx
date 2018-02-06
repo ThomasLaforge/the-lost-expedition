@@ -32,7 +32,7 @@ class MonoActionOption extends React.Component<MonoActionOptionProps> {
         return (
             <div 
                 className={'resolved-actions-choice' + (this.props.selected ? ' resolved-actions-choice-selected' : '')} 
-                onClick={() => this.props.onSelection}
+                onClick={() => this.props.onSelection()}
             >
                 { this.props.option.cardsToSwitch && 
                     <div className='choice-cards-to-switch'>
