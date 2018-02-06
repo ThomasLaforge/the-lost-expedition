@@ -37,6 +37,7 @@ class MonoActionOption extends React.Component<MonoActionOptionProps> {
                 { this.props.option.cardsToSwitch && 
                     <div className='choice-cards-to-switch'>
                         <Card card={this.props.option.cardsToSwitch[0]} />
+                        -
                         <Card card={this.props.option.cardsToSwitch[1]} />
                     </div>
                 }
