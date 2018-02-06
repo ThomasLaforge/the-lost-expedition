@@ -29,7 +29,6 @@ class MonoActionOption extends React.Component<MonoActionOptionProps> {
     }
 
     render() {
-        console.log('option', this.props.option)
         return (
             <div 
                 className={'resolved-actions-choice' + (this.props.selected ? ' resolved-actions-choice-selected' : '')} 
