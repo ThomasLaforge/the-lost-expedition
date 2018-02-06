@@ -45,7 +45,7 @@ export class Stack<T> {
     }
 
     getNextCards(){
-        return this.objects.slice(1, this.length - 1)
+        return this.objects.slice(1, this.length)
     }
 
     getNextOne(){
