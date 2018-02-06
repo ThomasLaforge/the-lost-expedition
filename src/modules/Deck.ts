@@ -24,7 +24,7 @@ export class Deck {
             return new Card(card.number, card.name, actionCollection)
         });
         if(shuffle){
-            this.shuffle()
+            // this.shuffle()
         }
     }
 
@@ -38,6 +38,10 @@ export class Deck {
 
     length(){
         return this.cards.length
+    }
+
+    getCarcdById(id: number){
+        return this.cards.filter(c => c.number === id)[0]
     }
 
     // Getters / Setters

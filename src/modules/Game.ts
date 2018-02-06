@@ -178,7 +178,7 @@ export class Game {
         this.resolveCard(card, resolvedActionSelection)
     }
 
-    resolveAction(c: Card, action: ResolvedAction){
+    resolveAction(c: Card, action: ResolvedAction) : boolean /* to keep */{
         let toKeep = false;
         action.monoActions.forEach( (resolvedMonoAction, i) => {
             let options = resolvedMonoAction.options
@@ -239,11 +239,11 @@ export class Game {
                 case ResourceEnum.Leaf:
                 case ResourceEnum.Camp:
                 case ResourceEnum.Compass:
-                    console.log('compass', resolvedMonoAction.drop)
                     if(resolvedMonoAction.drop){
                         if(options){
                             if(options.keptCard){
-                                console.log('use a kept card')
+                                console.log('To check: use a kept card')
+                                this.keptCards.remove(options.keptCard)
                             }
                             else if(options.hero){
                                 let hero = this.player.heroesCollection.getHero(options.hero)
@@ -259,7 +259,6 @@ export class Game {
                         }
                     }
                     else {
-                        console.log('keep card')
                         toKeep = true
                     }
                     break;
@@ -382,12 +381,28 @@ export class Game {
         return monoActionsWithOptions.length > 0
     }
     
+    getIndexFirstActionWhoNeedOptions(actions: Action[]) {
+        let i = 0
+        while(i < actions.length && !this.actionNeedOptions(actions[i]) ){
+            i++
+        }
+        return i
+    }
+    
     monoActionHasOptions(monoAction: MonoAction){
         return this.getOptionsForMonoAction(monoAction).length > 0
     }
     
     monoActionHasManyOptions(monoAction: MonoAction){
         return this.getOptionsForMonoAction(monoAction).length > 1
+    }
+    
+    getIndexFirstMonoActionToResolve(action: Action){
+        let i = 0
+        while(i < action.monoActions.length && !this.monoActionHasManyOptions(action.monoActions[i])){
+            i++
+        }
+        return i
     }
 
 /**

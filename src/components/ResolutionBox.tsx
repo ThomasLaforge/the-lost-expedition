@@ -63,7 +63,6 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
     }
 
     handleClickOnChoiceAction(newChoice: ActionModel){
-        console.log('change choice action', newChoice)
         this.setState({choiceActionChoice: newChoice === this.state.choiceActionChoice ? null : newChoice })
     }
 
@@ -135,6 +134,7 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
                 console.log('autoResolved after action selection', this.props.card.name, actionsCanBeAutoResolved)
                 if(actionsCanBeAutoResolved) {
                     this.props.game.autoResolveCard(this.props.card, actionSelection)
+                    selectedActions = []
                 }
 
                 this.setState({
@@ -157,7 +157,6 @@ class ResolutionBox extends React.Component<ResolutionBoxProps, ResolutionBoxSta
     }
     
     render() {
-        console.log('render resolution box', this.props.card)
         return (
             <div className="resolution-box">
                 <div className='resolution-box-card'>
